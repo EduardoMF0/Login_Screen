@@ -1,11 +1,9 @@
-import form from './Form/form.jsx'
+import Form from './Form/Form.jsx'
 
 function App() {
 
     return(
-        <div>
-            <form />
-        </div>
+            <Form />
     );
 };
 
