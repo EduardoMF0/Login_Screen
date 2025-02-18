@@ -3,24 +3,30 @@ import './Form.css'
 function Form(){
 
     return(
-        <div className="box1">
+        
+        <div > 
 
-            <section className='title'>
-                <h1>Acesse Sua Conta</h1>
-                <h2>Facilite sua compra logando na sua conta</h2>
-            </section>
+            <div id='background'></div>
 
-            <section>
-                <p>Email:</p>
-                <input type="text" />
+            <div className="box1">
+                     
+                <section className='title'>
+                    <h1>Acesse Sua Conta</h1>
+                    <h2>Facilite sua compra logando na sua conta</h2>
+                </section>
 
-                <p>Senha:</p>
-                <input type="text" />
+                <section>
+                    <p>Email:</p>
+                    <input type="text" placeholder='Digite seu Email'/>
 
-                <a href=''>Esqueceu sua Senha?</a>
-            </section>
+                    <p>Senha:</p>
+                    <input type="text" placeholder='Digite sua Senha'/>
 
-            <button type='submit'>Entrar</button>
+                    <a href=''>Esqueceu sua Senha?</a>
+                </section>
+
+                <button type='submit'>Entrar</button>
+            </div>
 
         </div>
 
