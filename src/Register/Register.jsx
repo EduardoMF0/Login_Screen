@@ -24,14 +24,16 @@ function Register(){
                         <input type="email" placeholder='Digite sua Email' id='email'/>
                     </div>
 
-                    <div>
-                        <label htmlFor='state'>Estado:</label>
-                        <select name="cars" id="state"></select>
-                    </div>
+                    <div id='state-date'>
+                        <div>
+                            <label htmlFor='date'>Data de Nascimento:</label>
+                            <input type="date" id='date'/>
+                        </div>
 
-                    <div>
-                        <label htmlFor='date'>Data de Nascimento:</label>
-                        <input type="date" id='date'/>
+                        <div>
+                            <label htmlFor='state'>Estado:</label>
+                            <select name="cars" id="state"></select>
+                        </div>
                     </div>
 
                     <div>
@@ -45,7 +47,7 @@ function Register(){
                     </div>    
                 </form>
 
-            <button type='submit'>Entrar</button>
+            <button type='submit' value="Submit">Entrar</button>
 
         </div>
 

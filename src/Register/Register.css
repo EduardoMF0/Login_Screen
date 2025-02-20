@@ -2,15 +2,13 @@ html,body{
     font-size: 62.5%;
     font-family: 'Archivo', sans-serif;   
 }
-body{
-    background-color: #fcfcfc;  
-}
+
 
 .box1 {
     height: 100vh;
-    width: 98vw;
+    /* width: 98vw; */
     /* background-color: #fcfcfc;   */
-    background-color: navajowhite;
+    /* background-color: red; */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -45,29 +43,51 @@ form{
     /* margin: 0 5% 0 5%; */
     margin-bottom: 6vh;
     background-color: rgb(144, 144, 187);
-
     width: 80%;
+    height: 100vh;
+
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 form > div{
     display: flex;
     flex-direction: column;
-    margin-bottom: 3.5vh;
+    width: 45%;
+
+    margin-bottom:3.7vh;
+}
+
+#state-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#state-date > div{
+    display: flex;
+    flex-direction: column;
+}
+#state-date > div:nth-child(2){
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
 }
 
 label{
     background: none;
     color: #050505;
     margin-bottom: 1vh;
+
     font-size: clamp(14px, 0.7rem + 0.7vw, 4vw);
     font-weight: bold;
 }
 
 input{
     padding: 1.5vh;
-    width: 70%;
+    width: 100%;
     border-radius: 0.4vw;
     border: none;
     background-color: #e1e1e1;

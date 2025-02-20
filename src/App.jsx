@@ -4,7 +4,7 @@ import Register from './Register/Register.jsx'
 function App() {
 
     return(
-            <Register />
+            <Form />
     );
 };
 
