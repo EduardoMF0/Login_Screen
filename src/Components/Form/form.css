@@ -1,11 +1,3 @@
-html,body{
-    font-size: 62.5%;
-    font-family: 'Archivo', sans-serif;   
-}
-body{
-    background-color: #fcfcfc;  
-}
-
 #background {
     background-image: url('./src/assets/background.jpg');
     background-position: center top;
@@ -21,7 +13,7 @@ body{
 .box-page1 {
     height: 100vh;
     width: 45vw;
-    background-color: #fcfcfc;  
+    background-color: var(--color-white-page1);  
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -29,27 +21,25 @@ body{
     z-index: 1; 
 }
 
-
-.title{
+.title-page1{
     margin-top: 12%;
     background: none;
 }
-.title > h1{
+.title-page1 > h1{
     font-size: clamp(20px, 1px + 1.2rem + 1.6vw, 4vw);
     margin-bottom: 1.1vh;
 }
-.title > h2{
+.title-page1 > h2{
     font-size: clamp(14px, 0.5rem + 0.5vw, 4vw);
     font-weight: 100;
     margin-bottom: 6vh;
 }
 
-h1, h2{
-    background: none;
-    color: #050505;
+.title-page1 h1, .title-page1 h2{
+    color: var(--color-font);
 }
 
-#form-page2{
+#form-page1{
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -57,51 +47,59 @@ h1, h2{
     margin-bottom: -6vh;
 }
 
-#form-page2 > .label-page1{
+#form-page1 > .category-page1{
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom:3.7vh;
+}
+
+#form-page1 > .label-page1{
     background: none;
-    color: #050505;
+    color: var(--color-font);
     margin-bottom: 1vh;
     font-size: clamp(14px, 0.7rem + 0.7vw, 4vw);
     font-weight: bold;
 }
 
-.input-page1{
+#form-page1 > .input-page1{
     padding: 1.5vh;
     border-radius: 0.4vw;
     border: none;
     background-color: #e1e1e1;
 }
-.input-page1::placeholder{
+
+/* .input-page1::placeholder{
     color: #8a8a8a;
 }
 
-#form-page2 > .input-page1:nth-child(2){
+#form-page1 > .input-page1:nth-child(2){
     margin-bottom: 6vh;    
 }
-#form-page2 > .input-page1:nth-child(2)::placeholder{
+#form-page1 > .input-page1:nth-child(2)::placeholder{
     color: #8a8a8a;
-}
+} */
 
 #restore-psw{
     width: 11.5vw;
-    height: 3.4vh;
-    margin: 1.4vh 0 14vh 66%; 
+    height: 3.7vh;
+    margin: -1.4vh 0 14vh 66%; 
 
     display: flex;
     justify-content: center;
     align-items: center;
     
-    color: #b763e8;;
+    color: var(--color-purple1);
     text-align: right;  
     font-size: clamp(14px, 0.2rem + 0.5vw, 4vw);
 }
 #restore-psw:hover{
-    color: #9c4bcb; 
+    color: var(--color-purple2); 
 }
 
-button {
+#login-button {
     margin: 0 auto;
-    background-color: #b763e8; 
+    background-color: var(--color-purple1); 
     color: white;
     border: none;
 
@@ -114,8 +112,8 @@ button {
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease-in-out; 
   } 
-  button:hover {
-    background-color: #9c4bcb; 
+  #login-button:hover {
+    background-color: var(--color-purple2); 
     transform: scale(1.05);
   }
   

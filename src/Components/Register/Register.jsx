@@ -10,7 +10,7 @@ function Register(){
 
             <div className="box-page2">
                 
-                <a href="" id='back'></a>
+                <a href="" id='back-button'></a>
 
                 <section className='title-page2'>
                     <h1>Crie Sua Conta</h1>
@@ -30,7 +30,7 @@ function Register(){
                     </div>
 
                     <div id='state-date'>
-                        <div id='date-div'>
+                        <div id='date-div-page2'>
                             <label htmlFor='date'>Data de Nascimento:</label>
                             <input type="date" id='date'/>
                         </div>
@@ -51,7 +51,7 @@ function Register(){
                         <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm'/>
                     </div>    
 
-                    <button type='submit' value="Submit">Criar Conta</button>
+                    <button type='submit' value="Submit" id='register-button'>Criar Conta</button>
                     
                 </form>
 

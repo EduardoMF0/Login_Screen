@@ -1,50 +1,51 @@
-html,body{
-    font-size: 62.5%;
-    font-family: 'Archivo', sans-serif;   
-}
-
 #background-page2{
     background-color: #e9e9e9;  
 }
 
 .box-page2 {
-    height: 100vh;
+    height: 100%;
     width: 50vw;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: #f5f5f5;
+    background-color: var(--color-white2-page2);
 
     -webkit-box-shadow: 0px 0px 7px 3px rgba(77,77,77,1);
     -moz-box-shadow: 0px 0px 7px 3px rgba(77,77,77,1);
     box-shadow: 0px 0px 7px 3px rgba(77,77,77,1);
 }
 
-#back {
-    width: 3.3vw;
-    height: 3.3vw;
-    background-color: blue;
+#back-button {
+    width: 3vw;
+    height: 3vw;
+    background-color: var(--color-purple1);
     border-radius: 50%;
+    text-decoration: none;
+
+    margin-top: 1vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     left: -41%;
-    top: 3%;
+    transition: all 0.3s ease-in-out; 
 }
-
-#back::after {
+#back-button:hover{
+   transform: scale(1.05);
+    background-color: var(--color-purple2);
+}
+#back-button::after {
     content: "🠔";
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     color: white;
     position: relative;
 }
 
-.title-page2{
+/* .title-page2{
     margin-top: 1%;
-}
+} */
 .title-page2 > h1{
     font-size: clamp(20px, 1px + 1.2rem + 1.6vw, 4vw);
     margin-bottom: 1.1vh;
@@ -57,16 +58,14 @@ html,body{
 
 h1, h2{
     background: none;
-    color: #050505;
+    color: var(--color-font);
 }
 
 #form-page2{
     text-align: left;
-    /* padding: 0 200px 0 200px;   */
-    /* margin: 0 5% 0 5%; */
+
     margin-bottom: 6vh;
     width: 100%;
-    height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -81,6 +80,30 @@ h1, h2{
     margin-bottom:3.7vh;
 }
 
+#form-page2 label{
+    background: none;
+    color: var(--color-font);
+    margin-bottom: 1vh;
+
+    font-size: clamp(14px, 0.7rem + 0.7vw, 4vw);
+    font-weight: bold;
+}
+
+#form-page2 input{
+    padding: 1.5vh;
+    width: 100%;
+    border-radius: 0.4vw;
+    border: 0.2vw solid transparent;
+    background-color: var(--color-gray);
+    outline: none; 
+}
+input::placeholder{
+    color: #8a8a8a;
+}
+#form-page2 input:focus{
+    border: 0.2vw solid var(--color-purple2);
+}
+
 #state-date{
     display: flex;
     align-items: center;
@@ -88,46 +111,20 @@ h1, h2{
     width: 64%;
     margin-bottom:3.7vh;
 }
-#state-date > .date-div{
-    display: flex;
-    flex-direction: column;
+#date-div-page2 > input{
+    margin-top: 1vh;
+    width: 45%;
 }
 #state-date > div:nth-child(2){
     display: flex;
     flex-direction: row;
     gap: 0.5vw;
 }
-#date-div > input{
-    width: 65%;
-}
 
-label{
-    background: none;
-    color: #050505;
-    margin-bottom: 1vh;
 
-    font-size: clamp(14px, 0.7rem + 0.7vw, 4vw);
-    font-weight: bold;
-}
-
-input{
-    padding: 1.5vh;
-    width: 100%;
-    border-radius: 0.4vw;
-    border: none;
-    background-color: #e0e0e0;
-    outline: none;
-}
-input::placeholder{
-    color: #8a8a8a;
-}
-input:focus{
-    border: 0.2vw solid #9c4bcb;
-}
-
-section > input:nth-child(2){
+/* section > input:nth-child(2){
     margin-bottom: 6vh;    
-}
+} */
 
 /* a{
     width: 11.5vw;
@@ -146,8 +143,8 @@ a:hover{
     color: #9c4bcb; 
 } */
 
-button {
-    background-color: #b763e8; 
+#register-button {
+    background-color: var(--color-purple1); 
     color: white;
     border: none;
     font-size: clamp(14px, 0.3rem + 1vw, 4vw);
@@ -161,7 +158,7 @@ button {
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease-in-out; 
   } 
-  button:hover {
-    background-color: #9c4bcb; 
+  #register-button:hover {
+    background-color: var(--color-purple2); 
     transform: scale(1.05);
   }
