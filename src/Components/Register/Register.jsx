@@ -9,7 +9,9 @@ function Register(){
         <div id="background-page2">
 
             <div className="box-page2">
-                    
+                
+                <a href="" id='back'></a>
+
                 <section className='title-page2'>
                     <h1>Crie Sua Conta</h1>
                     <h2>Facilite sua compra Criando uma conta</h2>

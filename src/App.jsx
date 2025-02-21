@@ -1,11 +1,12 @@
-import Form from './Form/Form.jsx'
-import Register from './Register/Register.jsx'
+import Form from './Components/Form/Form.jsx'
+import Register from './Components/Register/Register.jsx'
+
 
 function App() {
 
     return(
-            // <Form />
-            <Register />
+            <Form />
+            // <Register />
     );
 };
 
