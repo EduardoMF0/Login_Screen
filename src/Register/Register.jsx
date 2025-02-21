@@ -6,20 +6,23 @@ function Register(){
 
     <div > 
 
-        <div className="box1-page2">
-                 
-            <section className='title-page2'>
-                <h1>Acesse Sua Conta</h1>
-                <h2>Facilite sua compra logando na sua conta</h2>
-            </section>
+        <div id="background-page2">
 
-                <form action="">
-                    <div>
+            <div className="box-page2">
+                    
+                <section className='title-page2'>
+                    <h1>Crie Sua Conta</h1>
+                    <h2>Facilite sua compra Criando uma conta</h2>
+                </section>
+
+                <form action="" id='form-page2'>
+
+                    <div className='category-page2'>
                         <label htmlFor='name'>Nome:</label>
                         <input type="text" placeholder='Digite seu Nome' id='name'/>
                     </div>
                     
-                    <div>
+                    <div className='category-page2'>
                         <label htmlFor='email'>Email:</label>
                         <input type="email" placeholder='Digite sua Email' id='email'/>
                     </div>
@@ -36,20 +39,22 @@ function Register(){
                         </div>
                     </div>
 
-                    <div>
+                    <div className='category-page2'>
                         <label htmlFor='password'>Senha:</label>
                         <input type="password" placeholder='Digite sua Senha' id='password'/>
                     </div>
 
-                    <div>       
+                    <div className='category-page2'>       
                         <label htmlFor='passwordConfirm'>Confirme sua Senha:</label>
                         <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm'/>
                     </div>    
 
-                    <button type='submit' value="Submit">Entrar</button>
-
+                    <button type='submit' value="Submit">Criar Conta</button>
+                    
                 </form>
 
+
+            </div>
 
         </div>
 

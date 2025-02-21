@@ -16,8 +16,8 @@ function Form(){
                 </section>
 
                 <section>
-                    <p>Email:</p>
-                    <input type="text" placeholder='Digite seu Email'/>
+                    <label htmlFor='name'>Email:</label>
+                    <input type="text" id="name" placeholder='Digite seu Email'/>
 
                     <p>Senha:</p>
                     <input type="text" placeholder='Digite sua Senha'/>
