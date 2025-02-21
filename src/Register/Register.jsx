@@ -6,9 +6,9 @@ function Register(){
 
     <div > 
 
-        <div className="box1">
+        <div className="box1-page2">
                  
-            <section className='title'>
+            <section className='title-page2'>
                 <h1>Acesse Sua Conta</h1>
                 <h2>Facilite sua compra logando na sua conta</h2>
             </section>
@@ -25,7 +25,7 @@ function Register(){
                     </div>
 
                     <div id='state-date'>
-                        <div>
+                        <div id='date-div'>
                             <label htmlFor='date'>Data de Nascimento:</label>
                             <input type="date" id='date'/>
                         </div>
@@ -45,9 +45,11 @@ function Register(){
                         <label htmlFor='passwordConfirm'>Confirme sua Senha:</label>
                         <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm'/>
                     </div>    
+
+                    <button type='submit' value="Submit">Entrar</button>
+
                 </form>
 
-            <button type='submit' value="Submit">Entrar</button>
 
         </div>
 

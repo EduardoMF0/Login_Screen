@@ -3,30 +3,28 @@ html,body{
     font-family: 'Archivo', sans-serif;   
 }
 
-
-.box1 {
+.box1-page2 {
     height: 100vh;
-    /* width: 98vw; */
-    /* background-color: #fcfcfc;   */
+    width: 50vw;
+    background-color: #c56b6b;  
     /* background-color: red; */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    z-index: 1; 
 }
 
 
-.title{
-    margin-top: 12%;
+.title-page2{
+    margin-top: 4%;
     background: none;
 }
-.title > h1{
+.title-page2 > h1{
     font-size: clamp(20px, 1px + 1.2rem + 1.6vw, 4vw);
     margin-bottom: 1.1vh;
 }
-.title > h2{
+.title-page2 > h2{
     font-size: clamp(14px, 0.5rem + 0.5vw, 4vw);
     font-weight: 100;
     margin-bottom: 6vh;
@@ -43,7 +41,7 @@ form{
     /* margin: 0 5% 0 5%; */
     margin-bottom: 6vh;
     background-color: rgb(144, 144, 187);
-    width: 80%;
+    width: 100%;
     height: 100vh;
 
     display: flex;
@@ -54,7 +52,7 @@ form{
 form > div{
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 64%;
 
     margin-bottom:3.7vh;
 }
@@ -65,7 +63,6 @@ form > div{
     justify-content: space-between;
     align-items: center;
 }
-
 #state-date > div{
     display: flex;
     flex-direction: column;
@@ -74,6 +71,9 @@ form > div{
     display: flex;
     flex-direction: row;
     gap: 0.5vw;
+}
+#date-div > input{
+    width: 65%;
 }
 
 label{
