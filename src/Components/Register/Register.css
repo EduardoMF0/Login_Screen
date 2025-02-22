@@ -118,30 +118,20 @@ input::placeholder{
 #state-date > div:nth-child(2){
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 0.5vw;
 }
 
-
-/* section > input:nth-child(2){
-    margin-bottom: 6vh;    
-} */
-
-/* a{
-    width: 11.5vw;
-    height: 3.4vh;
-    margin: 1.4vh 0 14vh 66%; 
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    color: #b763e8;;
-    text-align: right;  
-    font-size: clamp(14px, 0.2rem + 0.5vw, 4vw);
+#form-page2 select{
+    padding: 1.5vh;
+    border-radius: 0.4vw;
+    border: 0.2vw solid transparent;
+    background-color: var(--color-gray);
+    outline: none; 
 }
-a:hover{
-    color: #9c4bcb; 
-} */
+#state-date select:focus{
+    border: 0.2vw solid var(--color-purple2);
+}
 
 #register-button {
     background-color: var(--color-purple1); 

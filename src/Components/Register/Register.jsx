@@ -1,13 +1,26 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from 'axios'
 import './Register.css'
 
 function Register(){
 
-    const navigate = useNavigate();
-  
-    const ToLogin = () => {
+    const navigate = useNavigate(); 
+    const ToLogin = ()=> {
       navigate("/");
     };
+
+    const [states, setStates] = useState([]);
+
+    useEffect(() => {
+        axios
+          .get("https://brasilapi.com.br/api/ibge/uf/v1")
+          .then(res => {
+            const statesName = res.data.map(state => state.sigla).sort(); 
+            setStates(statesName);
+          })
+          .catch(error => console.error("Erro ao buscar os estados:", error)); 
+      }, []);
 
     return(
 
@@ -17,7 +30,7 @@ function Register(){
 
             <div className="box-page2">
                 
-                <a href="" onClick={ToLogin} id='back-button'></a>
+                <a href="" onClick={(ToLogin)} id='back-button'></a>
 
                 <section className='title-page2'>
                     <h1>Crie Sua Conta</h1>
@@ -44,7 +57,11 @@ function Register(){
 
                         <div>
                             <label htmlFor='state'>Estado:</label>
-                            <select name="cars" id="state"></select>
+                            <select name="states" id="state">
+                            {states.map((state, index) => (
+                                <option key={index} value={state}>{state}</option> // Corrigido erro no map
+                            ))}
+                            </select>
                         </div>
                     </div>
 
