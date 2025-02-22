@@ -1,4 +1,4 @@
-#background {
+/* #background {
     background-image: url('./src/assets/background.jpg');
     background-position: center top;
     background-size: cover;
@@ -8,17 +8,26 @@
     position: absolute; 
     z-index: -1;
     filter: blur(0.2vw);
+} */
+
+#background-page1{
+    background-color: var(--color-background);  
 }
 
 .box-page1 {
     height: 100vh;
     width: 45vw;
-    background-color: var(--color-white-page1);  
+    background-color: var(--color-white-page);  
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     text-align: center;
     z-index: 1; 
+    /* background-color: var(--color-white2-page2); */
+
+    -webkit-box-shadow: 0px 0px 7px 3px rgba(77,77,77,1);
+    -moz-box-shadow: 0px 0px 7px 3px rgba(77,77,77,1);
+    box-shadow: 0px 0px 7px 3px rgba(77,77,77,1);
 }
 
 .title-page1{

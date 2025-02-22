@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import './Register.css'
 
 function Register(){
+
+    const navigate = useNavigate();
+  
+    const ToLogin = () => {
+      navigate("/");
+    };
 
     return(
 
@@ -10,7 +17,7 @@ function Register(){
 
             <div className="box-page2">
                 
-                <a href="" id='back-button'></a>
+                <a href="" onClick={ToLogin} id='back-button'></a>
 
                 <section className='title-page2'>
                     <h1>Crie Sua Conta</h1>
