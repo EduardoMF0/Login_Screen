@@ -1,3 +1,4 @@
+using ApiCrud.Data;
 using ApiCrud.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,12 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<UserContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
+builder.Services.AddDbContext<ConnectionContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ConnectionStrings")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
