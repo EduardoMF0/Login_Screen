@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiCrud.Data
 {
-    public class ConnectionContext : DbContext
+    public class DataContext : DbContext
     {
-        public ConnectionContext(DbContextOptions<ConnectionContext> options)
+        public DataContext(DbContextOptions<DataContext> options)
             : base(options) { }
 
         public DbSet<User> Users { get; set; }
