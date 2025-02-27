@@ -1165,9 +1165,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\ApiCrud.csproj",
-      "projectName": "ApiCrud",
-      "projectPath": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\ApiCrud.csproj",
+      "projectUniqueName": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\TestConnectionDB.csproj",
+      "projectName": "TestConnectionDB",
+      "projectPath": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\TestConnectionDB.csproj",
       "packagesPath": "C:\\Users\\DESKTOP\\.nuget\\packages\\",
       "outputPath": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\obj\\",
       "projectStyle": "PackageReference",

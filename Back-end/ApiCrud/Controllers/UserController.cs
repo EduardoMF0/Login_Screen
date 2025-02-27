@@ -11,7 +11,8 @@ namespace ApiCrud.Controllers
 
         private readonly IUserRepository _userRepository;
 
-        public UserController(IUserRepository userRepository) {
+        public UserController(IUserRepository userRepository)
+        {
             _userRepository = userRepository;
         }
 
@@ -19,14 +20,25 @@ namespace ApiCrud.Controllers
         public IActionResult add(UserAdd userAdd)
         {
 
-            var user = new User(userAdd.Nome, userAdd.Email, userAdd.Senha, userAdd.Estado, userAdd.Data_nascimento, userAdd.Data_criacaoConta);
+            var user = new User(userAdd.Nome, userAdd.Email);
 
             _userRepository.add(user);
 
             return Accepted();
 
-            /*            return Ok(new { Message = "Funcionando !!!" });
-            */
+            /*            try
+                        {
+                            var user = new User(userAdd.Nome, userAdd.Email);
+                            _userRepository.add(user);
+                            return CreatedAtAction(nameof(add), new { id = user.Id }, user);
+                        }
+                        catch (Exception ex)
+                        {
+                            return StatusCode(500, $"Erro no servidor: {ex.Message}");
+                        }
+
+                    }*/
+
         }
 
     }

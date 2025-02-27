@@ -1,29 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiCrud.Models
 {
-
+    [Table("usuariosteste")]
     public class UserAdd
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; private set; }
+        public long id { get; private set; }
 
-        public string Nome { get; private set; }
+        public string Nome { get;  set; }
 
-        public string Email { get; private set; }
+        public string Email { get;  set; }
 
-        public string Senha { get; private set; }
-
-        public string Estado { get; private set; }
-
-/*        [Required]
-*/        [DataType(DataType.Date)]
-        public DateTime Data_nascimento { get; private set; }
-
-/*        [Required]
-*/        [DataType(DataType.Date)]
-        public DateTime Data_criacaoConta { get; private set; }
+        public UserAdd() { 
+        
+        }
     }
 }
