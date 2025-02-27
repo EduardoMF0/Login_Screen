@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kJBIE2eMg70=",
+  "dgSpecHash": "9vHOacsMXK8=",
   "success": true,
-  "projectFilePath": "D:\\VS Repositorio\\APICrud\\Back-end\\ApiCrud\\ApiCrud.csproj",
+  "projectFilePath": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\ApiCrud.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DESKTOP\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.2\\microsoft.entityframeworkcore.9.0.2.nupkg.sha512",
     "C:\\Users\\DESKTOP\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.2\\microsoft.entityframeworkcore.abstractions.9.0.2.nupkg.sha512",

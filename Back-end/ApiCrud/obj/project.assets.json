@@ -1165,11 +1165,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\VS Repositorio\\APICrud\\Back-end\\ApiCrud\\ApiCrud.csproj",
+      "projectUniqueName": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\ApiCrud.csproj",
       "projectName": "ApiCrud",
-      "projectPath": "D:\\VS Repositorio\\APICrud\\Back-end\\ApiCrud\\ApiCrud.csproj",
+      "projectPath": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\ApiCrud.csproj",
       "packagesPath": "C:\\Users\\DESKTOP\\.nuget\\packages\\",
-      "outputPath": "D:\\VS Repositorio\\APICrud\\Back-end\\ApiCrud\\obj\\",
+      "outputPath": "D:\\VS Repositorio\\TestConnectionDB\\Back-end\\ApiCrud\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Visual Studio\\Shared\\NuGetPackages"

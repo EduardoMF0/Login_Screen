@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Back-end",
+    "\\Back-end\\ApiCrud"
   ],
-  "SelectedNode": "\\D:\\VS Repositorio\\TestConnectionDB",
+  "SelectedNode": "\\Back-end\\ApiCrud\\ApiCrud.csproj",
   "PreviewInSolutionExplorer": false
 }
