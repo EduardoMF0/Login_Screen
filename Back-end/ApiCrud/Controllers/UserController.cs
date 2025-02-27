@@ -15,13 +15,18 @@ namespace ApiCrud.Controllers
             _userRepository = userRepository;
         }
 
-    [HttpPost]
-        public IActionResult add()
+        [HttpPost]
+        public IActionResult add(UserAdd userAdd)
         {
 
-            var ola = new User();
-            return Ok(new { Message = "Funcionando !!!" });
+            var user = new User(userAdd.Nome, userAdd.Email, userAdd.Senha, userAdd.Estado, userAdd.Data_nascimento, userAdd.Data_criacaoConta);
+
+            _userRepository.add(user);
+            return Ok();
+
+            /*            return Ok(new { Message = "Funcionando !!!" });
+            */
         }
-    
-}
+
+    }
 }
