@@ -22,7 +22,8 @@ namespace ApiCrud.Controllers
             var user = new User(userAdd.Nome, userAdd.Email, userAdd.Senha, userAdd.Estado, userAdd.Data_nascimento, userAdd.Data_criacaoConta);
 
             _userRepository.add(user);
-            return Ok();
+
+            return Accepted();
 
             /*            return Ok(new { Message = "Funcionando !!!" });
             */

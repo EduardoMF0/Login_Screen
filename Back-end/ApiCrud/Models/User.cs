@@ -20,12 +20,12 @@ namespace ApiCrud.Models
 
         public string Estado { get; private set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+/*        [Required]
+*/        [DataType(DataType.Date)]
         public DateTime Data_nascimento { get; private set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+/*        [Required]
+*/        [DataType(DataType.Date)]
         public DateTime Data_criacaoConta { get; private set; }
 
         public User(string Nome, string Email, string Senha, string Estado, DateTime Data_nascimento, DateTime Data_criacaoConta)
