@@ -4,9 +4,18 @@ namespace ApiCrud.Data
 {
     public class UserRepository : IUserRepository
     {
-        public void Add(User user)
+
+        private readonly DataContext _context;
+
+        public UserRepository(DataContext context) 
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public void add(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
         }
     }
 }

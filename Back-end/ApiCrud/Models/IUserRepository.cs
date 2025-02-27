@@ -2,6 +2,6 @@
 {
     public interface IUserRepository
     {
-        public void Add(User user);
+        public void add(User user);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ApiCrud.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
 
 namespace ApiCrud.Controllers
 {
@@ -14,10 +15,12 @@ namespace ApiCrud.Controllers
             _userRepository = userRepository;
         }
 
-    [HttpGet]
-        public IActionResult GetUser()
+    [HttpPost]
+        public IActionResult add()
         {
-            return Ok(new { Message = "Lista de tarefas retornada com sucesso!" });
+
+            var ola = new User();
+            return Ok(new { Message = "Funcionando !!!" });
         }
     
 }
