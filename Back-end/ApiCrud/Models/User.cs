@@ -17,10 +17,15 @@ namespace ApiCrud.Models
 
         public string email { get;  set; }
 
+        [DataType(DataType.Date)]
+        public DateOnly data_c { get; private set; }
+
         public User(string nome, string email)
         {
             this.nome = nome;
-            this.email = email;
+            this.email = email; 
+            data_c = DateOnly.FromDateTime(DateTime.Now);
+
         }
     }
 }
