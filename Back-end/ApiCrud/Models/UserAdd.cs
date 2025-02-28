@@ -6,24 +6,23 @@ namespace ApiCrud.Models
 
     public class UserAdd
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; private set; }
+        public long id { get; private set; }
 
-        public string Nome { get; private set; }
+        public string nome { get; set; }
 
-        public string Email { get; private set; }
+        public string email { get; set; }
 
-        public string Senha { get; private set; }
+        public string senha { get; set; }
 
-        public string Estado { get; private set; }
+        public string estado { get; set; }
 
-/*        [Required]
-*/        [DataType(DataType.Date)]
-        public DateTime Data_nascimento { get; private set; }
+        public DateOnly data_nascimento { get; set; }
 
-/*        [Required]
-*/        [DataType(DataType.Date)]
-        public DateTime Data_criacaoConta { get; private set; }
+        public DateOnly data_criacaoconta { get; set; }
+
+        public UserAdd()
+        {
+
+        }
     }
 }

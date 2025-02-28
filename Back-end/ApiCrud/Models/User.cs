@@ -10,32 +10,32 @@ namespace ApiCrud.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; private set; }
+        public long id { get; private set; }
 
-        public string Nome { get; private set; }
+        public string nome { get; private set; }
 
-        public string Email { get; private set; }
+        public string email { get; private set; }
 
-        public string Senha { get; private set; }
+        public string senha { get; private set; }
 
-        public string Estado { get; private set; }
-
-/*        [Required]
-*/        [DataType(DataType.Date)]
-        public DateTime Data_nascimento { get; private set; }
+        public string estado { get; private set; }
 
 /*        [Required]
 */        [DataType(DataType.Date)]
-        public DateTime Data_criacaoConta { get; private set; }
+        public DateOnly data_nascimento { get; private set; }
 
-        public User(string Nome, string Email, string Senha, string Estado, DateTime Data_nascimento, DateTime Data_criacaoConta)
+/*        [Required]
+*/      [DataType(DataType.Date)]
+        public DateOnly data_criacaoconta { get; private set; }
+
+        public User(string nome, string email, string senha, string estado, DateOnly data_nascimento)
         {
-            this.Nome = Nome;
-            this.Email = Email;
-            this.Senha = Senha;
-            this.Estado = Estado;
-            this.Data_nascimento = Data_nascimento;
-            this.Data_criacaoConta = Data_criacaoConta;
+            this.nome = nome;
+            this.email = email;
+            this.senha = senha;
+            this.estado = estado;
+            this.data_nascimento = data_nascimento;
+            data_criacaoconta = DateOnly.FromDateTime(DateTime.Now);
         }
     }
 }
