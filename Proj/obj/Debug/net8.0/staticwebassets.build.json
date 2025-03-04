@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "E87yXukJssxIFvrQppwaDGenDoHaXhYi3VWY3T9cmLM=",
+  "Source": "TestConnectionDB",
+  "BasePath": "_content/TestConnectionDB",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
