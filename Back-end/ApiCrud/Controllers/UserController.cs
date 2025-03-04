@@ -19,7 +19,7 @@ namespace ApiCrud.Controllers
         public IActionResult add(UserAdd userAdd)
         {
 
-            var user = new User(userAdd.nome, userAdd.email, userAdd.senha, userAdd.estado, userAdd.data_nascimento);
+            var user = new User(userAdd.nome, userAdd.email, userAdd.senha, userAdd.estado);
 
             _userRepository.add(user);
 

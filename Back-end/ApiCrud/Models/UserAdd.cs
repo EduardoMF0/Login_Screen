@@ -15,11 +15,12 @@ namespace ApiCrud.Models
         public string senha { get; set; }
 
         public string estado { get; set; }
+/*
+        [DataType(DataType.Date)]
+        public DateOnly dta_nascimento { get; set; }*/
 
-        public DateOnly data_nascimento { get; set; }
-
-        public DateOnly data_criacaoconta { get; set; }
-
+        [DataType(DataType.Date)]
+        public DateOnly dta_criacaoconta { get; set; }
         public UserAdd()
         {
 
