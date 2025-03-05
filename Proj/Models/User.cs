@@ -10,25 +10,21 @@ namespace ApiCrud.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; private set; }
+        public long id { get; private set; }
 
-        public string Nome { get; private set; }
+        public string nome { get; set; }
 
-        public string Email { get; private set; }
-
-        public string Ola { get; private set; }
-
-
+        public string email { get; set; }
 
         [DataType(DataType.Date)]
-        public DateOnly data_c { get; private set; }
+        public DateTime data_c { get; private set; }
 
-
-        public User(string Nome, string Email)
+        public User(string nome, string email)
         {
-            this.Nome = Nome;
-            this.Email = Email;
-            data_c = DateOnly.FromDateTime(DateTime.Now);
+            this.nome = nome;
+            this.email = email;
+            this.email = email;
+            data_c = DateTime.Now;
         }
     }
 }
