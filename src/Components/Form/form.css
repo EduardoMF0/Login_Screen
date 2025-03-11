@@ -11,7 +11,9 @@
 } */
 
 #background-page1{
-    background-color: var(--color-background);  
+    /* background-color: var(--color-background);   */
+    background: rgb(193,128,231);
+    background: var(--background-gradient);
 }
 
 .box-page1 {

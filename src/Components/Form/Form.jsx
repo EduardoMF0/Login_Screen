@@ -1,12 +1,13 @@
 import './form.css'
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 
 function Form(){
 
     const navigate = useNavigate();
   
     const ToRegister = () => {
-      navigate("/register"); // Redireciona para a página de produtos
+      navigate("/register");
     };
 
     return(
@@ -19,7 +20,7 @@ function Form(){
                         
                     <section className='title-page1'>
                         <h1>Acesse Sua Conta</h1>
-                        <h2>Facilite sua compra logando na sua conta</h2>
+                        <h2>Facilite seu acesso logando na sua conta</h2>
                     </section>
 
                     <form id='form-page1'>

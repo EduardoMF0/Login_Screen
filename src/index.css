@@ -13,6 +13,7 @@ body{
 }
 
 :root{
+    --background-gradient: linear-gradient(180deg, rgba(193,128,231,1) 0%, rgba(174,94,221,1) 47%, rgba(156,75,203,1) 100%);
     --color-purple1: #b763e8;
     --color-purple2: #9c4bcb;
     --color-font: #050505;

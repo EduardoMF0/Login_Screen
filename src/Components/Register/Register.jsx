@@ -10,6 +10,7 @@ function Register(){
       navigate("/");
     };
 
+
     const [states, setStates] = useState([]);
 
     useEffect(() => {
@@ -20,7 +21,41 @@ function Register(){
             setStates(statesName);
           })
           .catch(error => console.error("Erro ao buscar os estados:", error)); 
-      }, []);
+    }, []);
+    
+
+    const [formData, setFormData] = useState({
+        nome: "",
+        email: "",
+        senha: "",
+        estado: "",
+        dta_nascimento: ""
+    });
+
+    const selectValue = (e) =>{
+        setFormData({...formData, [e.target.name]: e.target.value});
+    }
+
+    const submitToApi = async (e) => {
+
+        const formattedData = {
+            ...formData,
+            dta_nascimento: new Date(formData.dta_nascimento).toISOString()
+        };
+
+            e.preventDefault();
+        try {
+            const response =  axios.post("http://localhost:5173/api/user", formattedData, {
+                headers: { "Content-Type": "application/json" }
+            });
+
+            if (response.status === 201 || response.status === 200) {
+                console.log("Usuário cadastrado com sucesso!", response.data);
+            }
+            }catch (error) {
+                console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
+            }
+    };
 
     return(
 
@@ -37,29 +72,29 @@ function Register(){
                     <h2>Facilite sua compra Criando uma conta</h2>
                 </section>
 
-                <form action="" id='form-page2'>
+                <form onSubmit={submitToApi} id='form-page2'>
 
                     <div className='category-page2'>
-                        <label htmlFor='name'>Nome:</label>
-                        <input type="text" placeholder='Digite seu Nome' id='name'/>
+                        <label htmlFor='nameId'>Nome:</label>
+                        <input type="text" placeholder='Digite seu Nome' id='nameId' onChange={selectValue}/>
                     </div>
                     
                     <div className='category-page2'>
                         <label htmlFor='email'>Email:</label>
-                        <input type="email" placeholder='Digite sua Email' id='email'/>
+                        <input type="email" placeholder='Digite sua Email' id='email' onChange={selectValue} required/>
                     </div>
 
                     <div id='state-date'>
                         <div id='date-div-page2'>
                             <label htmlFor='date'>Data de Nascimento:</label>
-                            <input type="date" id='date'/>
-                        </div>
+                            <input type="date" id='date' onChange={selectValue} required/>
+                    </div>
 
                         <div>
                             <label htmlFor='state'>Estado:</label>
-                            <select name="states" id="state">
+                            <select name="states" id="state" onChange={selectValue}> 
                             {states.map((state, index) => (
-                                <option key={index} value={state}>{state}</option> // Corrigido erro no map
+                                <option key={index} value={state}>{state} </option> // Corrigido erro no map
                             ))}
                             </select>
                         </div>
@@ -67,19 +102,17 @@ function Register(){
 
                     <div className='category-page2'>
                         <label htmlFor='password'>Senha:</label>
-                        <input type="password" placeholder='Digite sua Senha' id='password'/>
+                        <input type="password" placeholder='Digite sua Senha' id='password' onChange={selectValue} required/>
                     </div>
 
                     <div className='category-page2'>       
                         <label htmlFor='passwordConfirm'>Confirme sua Senha:</label>
-                        <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm'/>
+                        <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm' required/>
                     </div>    
 
                     <button type='submit' value="Submit" id='register-button'>Criar Conta</button>
                     
                 </form>
-
-
             </div>
 
         </div>
