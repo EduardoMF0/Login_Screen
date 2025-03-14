@@ -40,11 +40,6 @@ function Register(){
         e.preventDefault();
         console.log("Botão submit clicado! Enviando requisição...");
 
-        // const formattedData = {
-        //     ...formData,
-        //     dta_nascimento: new Date(formData.dta_nascimento).toISOString()
-        // };
-
         console.log("Estado atual do formData:", formData);
 
         const formattedData = {
@@ -52,15 +47,14 @@ function Register(){
             email: formData.email,
             senha: formData.senha,
             estado: formData.estado,
-            dta_nascimento: new Date(formData.dta_nascimento).toISOString() // YYYY-MM-DD
+            dta_nascimento: new Date(formData.dta_nascimento).toISOString()
         };
     
- 
         try {
             const response = await axios.post(
                 "https://localhost:7107/api/user",
                 formattedData,
-                { headers: { "Content-Type": "application/json" } } // Garante o envio correto
+                { headers: { "Content-Type": "application/json" } } 
             );
             
             console.log(response.data);
@@ -68,14 +62,27 @@ function Register(){
 
             }catch (error) {
                 console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-                
             }
     };
+
+        const [type, setTipo] = useState("password");
+        const [imagem, setImagem] = useState("src/assets/eye-slash.svg"); 
+      
+        const trocarImagem = () => {
+          if (type === "password") {
+            setTipo("text");
+            setImagem("src/assets/eye.svg");
+          } else {
+            setTipo("password");
+            setImagem("src/assets/eye-slash.svg"); 
+          }
+        };
+
+
 
     return(
 
     <div > 
-
         <div id="background-page2">
 
             <div className="box-page2">
@@ -117,9 +124,10 @@ function Register(){
 
                     <div className='category-page2'>
                         <label htmlFor='password'>Senha:</label>
-                        <input type="password" placeholder='Digite sua Senha' name="senha" id='password' onChange={selectValue} required/>
+                        <img src={imagem} alt="show" id="show-eye" onClick={trocarImagem}/>
+                        <input type={type} placeholder='Digite sua Senha' name="senha" id='password' onChange={selectValue} required/>
                     </div>
-
+                        
                     <div className='category-page2'>       
                         <label htmlFor='passwordConfirm'>Confirme sua Senha:</label>
                         <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm' required/>
@@ -132,8 +140,7 @@ function Register(){
 
         </div>
 
-    </div>
-    
+    </div> 
     )
 }
 
