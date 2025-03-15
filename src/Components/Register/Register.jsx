@@ -10,8 +10,21 @@ function Register(){
       navigate("/");
     };
 
-
+    const [alertTxt, setAlertText] = useState("");
     const [states, setStates] = useState([]);
+    const [formData, setFormData] = useState({
+        nome: "",
+        email: "",
+        senha: "",
+        estado: "",
+        dta_nascimento: ""
+    });
+    const [confirmPsw, setConfirmpsw] = useState("");
+    const [type, setTipo] = useState("password");
+    const [imagem, setImagem] = useState("src/assets/eye-slash.svg"); 
+
+
+// ----- Start Get API BR states
 
     useEffect(() => {
         axios
@@ -23,50 +36,65 @@ function Register(){
           .catch(error => console.error("Erro ao buscar os estados:", error)); 
     }, []);
     
+// ----- END
 
-    const [formData, setFormData] = useState({
-        nome: "",
-        email: "",
-        senha: "",
-        estado: "",
-        dta_nascimento: ""
-    });
 
     const selectValue = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
+    const selectValuePsw = (e) =>{
+        setConfirmpsw(e.target.value);
+    }
+
+
+// ----- Start Post to API
+
     const submitToApi = async (e) => {
         e.preventDefault();
-        console.log("Botão submit clicado! Enviando requisição...");
 
-        console.log("Estado atual do formData:", formData);
+        if(formData.senha != confirmPsw){
+            setAlertText(`Erro! "Senha" e "Confirmar Senhas são DIFERENTES.`);
+            setConfirmpsw("");
+        }
+        else{
 
-        const formattedData = {
-            nome: formData.nome,
-            email: formData.email,
-            senha: formData.senha,
-            estado: formData.estado,
-            dta_nascimento: new Date(formData.dta_nascimento).toISOString()
+            setAlertText("")
+
+            console.log("Botão submit clicado! Enviando requisição...");
+
+            console.log("Estado atual do formData:", formData);
+
+            const formattedData = {
+                nome: formData.nome,
+                email: formData.email,
+                senha: formData.senha,
+                estado: formData.estado,
+                dta_nascimento: new Date(formData.dta_nascimento).toISOString()
+            };
+        
+            try {
+                const response = await axios.post(
+                    "https://localhost:7107/api/user",
+                    formattedData,
+                    { headers: { "Content-Type": "application/json" } } 
+                );
+                
+                console.log(response.data);
+                console.log(response.status);
+                console.log(response.statusText);
+                alert("deu certo");
+
+                }catch (error) {
+                    console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
+                }
         };
-    
-        try {
-            const response = await axios.post(
-                "https://localhost:7107/api/user",
-                formattedData,
-                { headers: { "Content-Type": "application/json" } } 
-            );
-            
-            console.log(response.data);
-            alert("deu certo");
-
-            }catch (error) {
-                console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-            }
     };
 
-        const [type, setTipo] = useState("password");
-        const [imagem, setImagem] = useState("src/assets/eye-slash.svg"); 
+// ----- END
+
+
+// ----- Start Button show password
       
         const trocarImagem = () => {
           if (type === "password") {
@@ -78,8 +106,20 @@ function Register(){
           }
         };
 
+// ----- END
 
 
+        // const [cor, setCor] = useState(``);
+
+        // const alert =() => {
+        //     if((formData.senha != ))
+        // }
+
+        // const mostrar = () =>{
+        //     return console.log(confirmPsw);
+        // }
+
+        
     return(
 
     <div > 
@@ -91,8 +131,13 @@ function Register(){
 
                 <section className='title-page2'>
                     <h1>Crie Sua Conta</h1>
-                    <h2>Facilite sua compra Criando uma conta</h2>
+                    <h2>Facilite seu acesso criando uma conta</h2>
                 </section>
+
+                <div id="alert">
+                    <div id="background"></div>
+                    <p onChange={setAlertText}> {alertTxt}</p>
+                </div>
 
                 <form onSubmit={submitToApi} id='form-page2'>
 
@@ -130,7 +175,7 @@ function Register(){
                         
                     <div className='category-page2'>       
                         <label htmlFor='passwordConfirm'>Confirme sua Senha:</label>
-                        <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm' required/>
+                        <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm' value={confirmPsw} onChange={selectValuePsw} required/>
                     </div>    
 
                     <button type='submit' id='register-button'>Criar Conta</button>
