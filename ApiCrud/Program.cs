@@ -16,7 +16,26 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+
+
+
+
 var app = builder.Build();
+
+app.UseCors("AllowAll"); // Ativar CORS
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

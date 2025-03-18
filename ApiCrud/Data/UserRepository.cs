@@ -1,4 +1,5 @@
 ﻿using ApiCrud.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ApiCrud.Data
 {
@@ -16,6 +17,18 @@ namespace ApiCrud.Data
         {
             _context.Users.Add(user);
             _context.SaveChanges();
+        }
+
+        /*        public List<User> Get(User email, User senha)
+        */
+          public List<User> Get(string estado, string senha)
+        {
+            var query = _context.Users.AsQueryable();
+
+            query = query.Where(u => (u.email == estado) || u.senha.Contains(senha));   
+
+            return query.ToList();
+
         }
     }
 }
