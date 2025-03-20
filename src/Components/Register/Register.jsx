@@ -87,8 +87,19 @@ function Register(){
 
                 }catch (error) {
                     console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-                }
-        };
+                    const errorMessage = error.response?.data?.message  || "Erro desconhecido";
+
+                    setAlertText(errorMessage);
+
+                    setFormData({
+                        nome: "",
+                        email: "",
+                        senha: "",
+                        estado: "",
+                        dta_nascimento: ""
+                    });
+                    setConfirmpsw("");
+        };      };
     };
 
 // ----- END
@@ -170,7 +181,7 @@ function Register(){
                     <div className='category-page2'>
                         <label htmlFor='password'>Senha:</label>
                         <img src={imagem} alt="show" id="show-eye" onClick={trocarImagem}/>
-                        <input type={type} placeholder='Digite sua Senha' name="senha" id='password' onChange={selectValue} required/>
+                        <input type={type} placeholder='Digite sua Senha' name="senha" id='password' value={formData.senha} onChange={selectValue} required/>
                     </div>
                         
                     <div className='category-page2'>       
