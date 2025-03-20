@@ -6,6 +6,6 @@
 
 /*        public List<User> Get(User email, User senha);
 */
-        public List<User> Get(string estado, string senha);
+        public List<User> Get(string email);
     }
 }

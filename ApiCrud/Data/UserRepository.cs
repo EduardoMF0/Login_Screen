@@ -21,11 +21,14 @@ namespace ApiCrud.Data
 
         /*        public List<User> Get(User email, User senha)
         */
-          public List<User> Get(string estado, string senha)
+          public List<User> Get(string email)
         {
+
+            /*var query = _context.Users.ToList();
+*/
             var query = _context.Users.AsQueryable();
 
-            query = query.Where(u => (u.email == estado) || u.senha.Contains(senha));   
+            query = query.Where(u => (u.email == email));
 
             return query.ToList();
 

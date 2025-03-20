@@ -17,26 +17,39 @@ namespace ApiCrud.Controllers
 
 
         [HttpPost]
-        public IActionResult add([FromBody] UserAdd userAdd) {
+        public async Task<IActionResult> add([FromBody] UserAdd userAdd) {
 
             if (userAdd == null)
                 return BadRequest("Os dados enviados são inválidos!");
 
-
             var user = new User(userAdd.nome, userAdd.email, userAdd.senha, userAdd.estado, userAdd.dta_nascimento);
 
-            _userRepository.add(user);
+            var getSeExist = await Get(userAdd.email);
 
-            return Ok(new { Message = "Funcionando !!!" });
+            if (getSeExist is NotFoundResult)
+            {
+                _userRepository.add(user);
+
+                return Ok(new { Message = "Funcionando !!!" });
+            }
+
+            return BadRequest(new { Message = "Esse email já está cadastrado!" });
 
         }
 
-        [HttpGet("{email}/{senha}")]
-        public async Task <IActionResult> Get(string email, string senha)
-        {
-            var User = _userRepository.Get(email, senha);
+        [HttpGet("{email}")]
+        public async Task<IActionResult> Get(string email) {
 
-            return Conflict(User);
+            var users = _userRepository.Get(email);
+
+            if (users.Any())
+            {
+                return Ok(users);
+            }
+            
+            return NotFound();
+            
         }
+
     }
 }
