@@ -17,21 +17,24 @@ namespace ApiCrud.Data
         {
             _context.Users.Add(user);
             _context.SaveChanges();
-        }
+        }        
 
-        /*        public List<User> Get(User email, User senha)
-        */
-          public List<User> Get(string email)
+          public List<User> GetVerify(string email)
         {
-
-            /*var query = _context.Users.ToList();
-*/
             var query = _context.Users.AsQueryable();
 
             query = query.Where(u => (u.email == email));
 
             return query.ToList();
-
         }
+
+        public List<User> LoginVerifyDb(string email, string senha)
+          {
+            var query = _context.Users.AsQueryable();
+
+            query = query.Where(u => (u.email == email) && (u.senha == senha));
+
+            return query.ToList();
+          }
     }
 }

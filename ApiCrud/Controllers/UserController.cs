@@ -17,14 +17,14 @@ namespace ApiCrud.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> add([FromBody] UserAdd userAdd) {
+        public async Task<IActionResult> addDbUser([FromBody] UserAdd userAdd) {
 
             if (userAdd == null)
                 return BadRequest("Os dados enviados são inválidos!");
 
             var user = new User(userAdd.nome, userAdd.email, userAdd.senha, userAdd.estado, userAdd.dta_nascimento);
 
-            var getSeExist = await Get(userAdd.email);
+            var getSeExist = await GetVerify(userAdd.email);
 
             if (getSeExist is NotFoundResult)
             {
@@ -37,18 +37,35 @@ namespace ApiCrud.Controllers
 
         }
 
-        [HttpGet("{email}")]
-        public async Task<IActionResult> Get(string email) {
+        [HttpGet("verify/{email}")]
+        public async Task<IActionResult> GetVerify(string email)
+        {
 
-            var users = _userRepository.Get(email);
+            var users = _userRepository.GetVerify(email);
+
+            if (users.Any())
+            {
+                return Ok();
+            }
+
+            return NotFound(users);
+
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
+        {
+
+            var users = _userRepository.LoginVerifyDb(userLogin.email, userLogin.senha);
 
             if (users.Any())
             {
                 return Ok(users);
             }
-            
-            return NotFound();
-            
+
+            return NotFound(new { Message = "Problemas" });
+
+
         }
 
     }
