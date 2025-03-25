@@ -27,8 +27,7 @@ function Register(){
 // ----- Start Get API BR states
 
     useEffect(() => {
-        axios
-          .get("https://brasilapi.com.br/api/ibge/uf/v1")
+        axios.get("https://brasilapi.com.br/api/ibge/uf/v1")
           .then(res => {
             const statesName = res.data.map(state => state.sigla).sort(); 
             setStates(statesName);
@@ -85,7 +84,8 @@ function Register(){
                 console.log(response.statusText);
                 alert("deu certo");
 
-                }catch (error) {
+            }
+                catch (error) {
                     console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
                     const errorMessage = error.response?.data?.message  || "Erro desconhecido";
 
@@ -99,7 +99,8 @@ function Register(){
                         dta_nascimento: ""
                     });
                     setConfirmpsw("");
-        };      };
+                };      
+        };
     };
 
 // ----- END

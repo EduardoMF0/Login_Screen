@@ -1,6 +1,8 @@
 import './form.css'
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState} from "react";
+import axios from 'axios'
+
 
 function Form(){
 
@@ -9,6 +11,61 @@ function Form(){
     const ToRegister = () => {
       navigate("/register");
     };
+
+    const [formData, setFormData] = useState({
+        email: "",
+        senha: "",
+    });
+
+    const selectValue = (e) =>{
+        setFormData({...formData, [e.target.name]: e.target.value});
+    }
+
+    
+        // const acessButton = () => {
+            // e.preventDefault();
+
+            // try{
+            //     axios.get("https://localhost:7107/api/user")
+            //         .then(res => {
+            //             console.WriteLine(res.data);
+            //         })
+            //         .catch(error => console.error("Erro ao buscar os estados:", error)); 
+            //         .catch(erro){
+            //             console.WriteLine(erro);
+            //         };
+            // }
+            // catch{
+            //     console.WriteLine("Não funcionou");
+            // };
+
+    const funciona = async () => {
+
+        // axios.get("https://localhost:7107/api/user/login/${formData.email}/${formData.senha}")
+        // .then(res => console.log(res.data))
+        // .catch(error => console.error("Erro ao buscar", error));  
+        
+        const formattedData = {
+            email: formData.email,
+            senha: formData.senha,
+        };
+
+        try {
+            const response = await axios.post(
+                "https://localhost:7107/api/user/login",
+                formattedData,
+                { headers: { "Content-Type": "application/json" } } 
+            ) 
+        
+            console.log(response.data);
+            console.log(response.status);
+            }
+            catch (error) {
+                console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
+            }
+        
+        };
+    
 
     return(
         
@@ -22,23 +79,22 @@ function Form(){
                         <h1>Acesse Sua Conta</h1>
                         <h2>Facilite seu acesso logando na sua conta</h2>
                     </section>
-
-                    <form id='form-page1'>
+                    {/* onSubmit={acessButton} */}
+                    <form id='form-page1'  >
                         <div className='category-page1'>
-                            <label htmlFor='name' className='label-page1'>Email:</label>
-                            <input type="text" id="name" placeholder='Digite seu Email'/>
+                            <label htmlFor='email' className='label-page1'>Email:</label>
+                            <input type="text" name="email" id="email" placeholder='Digite seu Email' value={formData.email} onChange={selectValue} required/>
                         </div>
 
                         <div className='category-page1'>
                             <label htmlFor='psw' className='label-page1'>Senha:</label>
-                            <input type="text" id='psw' placeholder='Digite sua Senha' />
+                            <input type="text" name="senha" id='psw' placeholder='Digite sua Senha' value={formData.senha} onChange={selectValue} required/>
                         </div>
                     
                         <a href='' id='restore-psw'>Esqueci Minha Senha</a>
-
                     </form>
 
-                    <button type='submit' value="Submit" id='login-button'>Entrar</button>
+                    <button type='submit' value="Submit" id='login-button' onClick={funciona}>Entrar</button>
 
                     <div className='register-div'>
                         <h3>Não tem conta? Cadastre-se</h3>
@@ -51,7 +107,9 @@ function Form(){
         </div>
 
     );
-    
+
 };
+    
+
 
 export default Form
