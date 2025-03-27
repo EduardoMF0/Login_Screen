@@ -1,12 +1,16 @@
 import './form.css'
 import { useNavigate } from "react-router-dom";
 import { useState} from "react";
-import axios from 'axios'
+// import axios from 'axios'
 
 
 function Form(){
 
     const navigate = useNavigate();
+
+    const ToLoggedIn = () => {
+        navigate("/loggedIn");
+      };
   
     const ToRegister = () => {
       navigate("/register");
@@ -39,32 +43,28 @@ function Form(){
             //     console.WriteLine("Não funcionou");
             // };
 
-    const funciona = async () => {
+    // const funciona = async () => {
+        
+    //     const formattedData = {
+    //         email: formData.email,
+    //         senha: formData.senha,
+    //     };
 
-        // axios.get("https://localhost:7107/api/user/login/${formData.email}/${formData.senha}")
-        // .then(res => console.log(res.data))
-        // .catch(error => console.error("Erro ao buscar", error));  
+    //     try {
+    //         const response = await axios.post(
+    //             "https://localhost:7107/api/user/login",
+    //             formattedData,
+    //             { headers: { "Content-Type": "application/json" } } 
+    //         ) 
         
-        const formattedData = {
-            email: formData.email,
-            senha: formData.senha,
-        };
-
-        try {
-            const response = await axios.post(
-                "https://localhost:7107/api/user/login",
-                formattedData,
-                { headers: { "Content-Type": "application/json" } } 
-            ) 
+    //         console.log(response.data);
+    //         console.log(response.status);
+    //         }
+    //         catch (error) {
+    //             console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
+    //         }
         
-            console.log(response.data);
-            console.log(response.status);
-            }
-            catch (error) {
-                console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-            }
-        
-        };
+    //     };
     
 
     return(
@@ -94,7 +94,7 @@ function Form(){
                         <a href='' id='restore-psw'>Esqueci Minha Senha</a>
                     </form>
 
-                    <button type='submit' value="Submit" id='login-button' onClick={funciona}>Entrar</button>
+                    <button type='submit' value="Submit" id='login-button' onClick={ToLoggedIn}>Entrar</button>
 
                     <div className='register-div'>
                         <h3>Não tem conta? Cadastre-se</h3>
