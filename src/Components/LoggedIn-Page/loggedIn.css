@@ -47,15 +47,16 @@ p{
 
 .outro{
     width: 23vw;
-    height: 5.3vh;
+    height: 6.4vh;
     background-color: #d5d5d5;
     border: 0.2vw solid #969696;
-    border-radius: 0.5vw;;
+    border-radius: 0.5vw;
 
     margin-top: 0.6vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     font-size: 14px;
 

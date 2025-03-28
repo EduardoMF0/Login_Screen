@@ -7,10 +7,6 @@ import axios from 'axios'
 function Form(){
 
     const navigate = useNavigate();
-
-    const ToLoggedIn = () => {
-        navigate("/loggedIn", {state:{ formData }});
-      };
   
     const ToRegister = () => {
       navigate("/register");
@@ -20,28 +16,12 @@ function Form(){
         email: "",
         senha: "",
     });
+    const [userInfo, setuserInfo] = useState({});
+
 
     const selectValue = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
     }
-
-    
-        // const acessButton = () => {
-        //     e.preventDefault();
-
-        //     try{
-        //         axios.get("https://localhost:7107/api/user")
-        //             .then(res => {
-        //                 console.WriteLine(res.data);
-        //             })
-        //             .catch(error => console.error("Erro ao buscar os estados:", error)); 
-        //             .catch(erro){
-        //                 console.WriteLine(erro);
-        //             };
-        //     }
-        //     catch{
-        //         console.WriteLine("Não funcionou");
-        //     };
 
     const funciona = async () => {
         
@@ -49,6 +29,7 @@ function Form(){
             email: formData.email,
             senha: formData.senha,
         };
+        var user;
 
         try {
             const response = await axios.post(
@@ -57,6 +38,10 @@ function Form(){
                 { headers: { "Content-Type": "application/json" } } 
             ) 
         
+            user = response.data[0];
+
+            setuserInfo(user)
+            
             console.log(response.data);
             console.log(response.status);
 
@@ -68,10 +53,9 @@ function Form(){
             }
         
         if(status == 200){
-            ToLoggedIn()
+            navigate("/loggedIn", { state: { userInfo: user } });
         }
-
-        };
+    };
     
 
     return(
@@ -110,7 +94,6 @@ function Form(){
                 </div>
 
             </div>
-
         </div>
 
     );

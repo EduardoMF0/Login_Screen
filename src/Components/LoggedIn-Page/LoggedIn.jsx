@@ -2,21 +2,20 @@ import './loggedIn.css'
 
 import { useEffect } from 'react'
 import { useLocation } from "react-router-dom";
-
+;
 
 function LoggedIn (){
 
     const location = useLocation();
 
     useEffect(() => {
-        const email = location.state?.formData.email || "Não encontrado";
-        const senha = location.state?.formData.senha || "Não encontrado";
-
-
-        console.log(email)
-        console.log(senha)
+        // console.log(userInfo.nome)
     });
+    const userInfo  = location.state?.userInfo || "Não encontrado";
 
+    const dataOriginal = new Date(userInfo.dta_nascimento);
+    const dataFormat = new Intl.DateTimeFormat("pt-BR").format(dataOriginal);
+    
     return(
         <div>
             <div id="background-page">
@@ -29,12 +28,12 @@ function LoggedIn (){
 
                             <div>
                                 <p>Nome:</p>
-                                <div className='outro'>Nome</div>
+                                <div className='outro'>{userInfo.nome}</div>
                             </div>
                             
                             <div className='title'>
                                 <p>Email:</p>
-                                <div className='outro'>Email</div>
+                                <div className='outro'>{userInfo.email}</div>
                             </div>
                            
                         </div>
@@ -43,12 +42,12 @@ function LoggedIn (){
 
                             <div>
                                 <p>Data de Nascimento</p>
-                                <div className='outro'>Data de Nascimento</div>
+                                <div className='outro'>{dataFormat}</div>
                             </div>
                             
                             <div className='title'>
                                 <p>Estado:</p>
-                                <div className='outro'>Estado</div>
+                                <div className='outro'>{userInfo.estado}</div>
                             </div>
                             
                         </div>
@@ -60,6 +59,8 @@ function LoggedIn (){
             </div>
         </div>
     )
+    
 }
+
 
 export default LoggedIn
