@@ -1,6 +1,21 @@
 import './loggedIn.css'
 
+import { useEffect } from 'react'
+import { useLocation } from "react-router-dom";
+
+
 function LoggedIn (){
+
+    const location = useLocation();
+
+    useEffect(() => {
+        const email = location.state?.formData.email || "Não encontrado";
+        const senha = location.state?.formData.senha || "Não encontrado";
+
+
+        console.log(email)
+        console.log(senha)
+    });
 
     return(
         <div>

@@ -1,7 +1,7 @@
 import './form.css'
 import { useNavigate } from "react-router-dom";
 import { useState} from "react";
-// import axios from 'axios'
+import axios from 'axios'
 
 
 function Form(){
@@ -9,7 +9,7 @@ function Form(){
     const navigate = useNavigate();
 
     const ToLoggedIn = () => {
-        navigate("/loggedIn");
+        navigate("/loggedIn", {state:{ formData }});
       };
   
     const ToRegister = () => {
@@ -27,44 +27,51 @@ function Form(){
 
     
         // const acessButton = () => {
-            // e.preventDefault();
+        //     e.preventDefault();
 
-            // try{
-            //     axios.get("https://localhost:7107/api/user")
-            //         .then(res => {
-            //             console.WriteLine(res.data);
-            //         })
-            //         .catch(error => console.error("Erro ao buscar os estados:", error)); 
-            //         .catch(erro){
-            //             console.WriteLine(erro);
-            //         };
-            // }
-            // catch{
-            //     console.WriteLine("Não funcionou");
-            // };
+        //     try{
+        //         axios.get("https://localhost:7107/api/user")
+        //             .then(res => {
+        //                 console.WriteLine(res.data);
+        //             })
+        //             .catch(error => console.error("Erro ao buscar os estados:", error)); 
+        //             .catch(erro){
+        //                 console.WriteLine(erro);
+        //             };
+        //     }
+        //     catch{
+        //         console.WriteLine("Não funcionou");
+        //     };
 
-    // const funciona = async () => {
+    const funciona = async () => {
         
-    //     const formattedData = {
-    //         email: formData.email,
-    //         senha: formData.senha,
-    //     };
+        const formattedData = {
+            email: formData.email,
+            senha: formData.senha,
+        };
 
-    //     try {
-    //         const response = await axios.post(
-    //             "https://localhost:7107/api/user/login",
-    //             formattedData,
-    //             { headers: { "Content-Type": "application/json" } } 
-    //         ) 
+        try {
+            const response = await axios.post(
+                "https://localhost:7107/api/user/login",
+                formattedData,
+                { headers: { "Content-Type": "application/json" } } 
+            ) 
         
-    //         console.log(response.data);
-    //         console.log(response.status);
-    //         }
-    //         catch (error) {
-    //             console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-    //         }
+            console.log(response.data);
+            console.log(response.status);
+
+            var status = response.status;
+
+            }
+            catch (error) {
+                console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
+            }
         
-    //     };
+        if(status == 200){
+            ToLoggedIn()
+        }
+
+        };
     
 
     return(
@@ -94,7 +101,7 @@ function Form(){
                         <a href='' id='restore-psw'>Esqueci Minha Senha</a>
                     </form>
 
-                    <button type='submit' value="Submit" id='login-button' onClick={ToLoggedIn}>Entrar</button>
+                    <button type='submit' value="Submit" id='login-button' onClick={funciona}>Entrar</button>
 
                     <div className='register-div'>
                         <h3>Não tem conta? Cadastre-se</h3>
