@@ -59,6 +59,24 @@ p{
     text-align: center;
 
     font-size: 14px;
-
-
 }
+
+#exit-button {
+    margin: 6vh auto;
+    background-color: var(--color-purple1); 
+    color: white;
+    border: none;
+
+    font-size: clamp(14px, 0.3rem + 1vw, 4vw);
+    font-weight: bold;
+    padding: 2.2vh 12vw;
+    border-radius: 0.6vw;
+    cursor: pointer;
+
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease-in-out; 
+  } 
+  #exit-button:hover {
+    background-color: var(--color-purple2); 
+    transform: scale(1.05);
+  }

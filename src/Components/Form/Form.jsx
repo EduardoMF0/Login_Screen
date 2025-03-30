@@ -1,4 +1,5 @@
 import './form.css'
+import imgLoad from '/src/assets/load.svg';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect} from "react";
 import axios from 'axios'
@@ -6,8 +7,7 @@ import axios from 'axios'
 
 function Form(){
 
-    const navigate = useNavigate();
-  
+    const navigate = useNavigate(); 
     const ToRegister = () => {
       navigate("/register");
     };
@@ -16,17 +16,24 @@ function Form(){
         email: "",
         senha: "",
     });
-    const [userInfo, setuserInfo] = useState({});
-
+    const [, setuserInfo] = useState({});
+    const [loading, setLoading] = useState('Entrar');
 
     const selectValue = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
+    }
+
+    const load = () =>{
+        const esse = (<><img src={imgLoad} alt="Carregando" id='load-svg'/></>);;
+        setLoading(esse)
     }
 
     var user;
 
     const funciona = async () => {
         
+        load();
+
         const formattedData = {
             email: formData.email,
             senha: formData.senha,
@@ -60,22 +67,15 @@ function Form(){
         }
     };
 
-    // useEffect(() => {
-    //     if (userInfo) {
-    //         navigate("/loggedIn", { state: { userInfo } } );
-    //     }
-    // }, [userInfo, navigate]);
-
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
 
         if (storedUser) {
             const parsedUser = JSON.parse(storedUser);
-            setuserInfo(parsedUser);
 
-            navigate("/loggedIn", { state: { userInfo: userInfo } });
+            navigate("/loggedIn", { state: { userInfo: parsedUser }, replace: true });
         }
-    }, [userInfo, navigate]);
+    }, [navigate]);
 
 
     return(
@@ -91,6 +91,11 @@ function Form(){
                         <h2>Facilite seu acesso logando na sua conta</h2>
                     </section>
 
+                    {/* <div id="alert-login">
+                        <div id="background"></div>
+                        <p>ALERTA</p>
+                    </div> */}
+
                     <form id='form-page1'  >
                         <div className='category-page1'>
                             <label htmlFor='email' className='label-page1'>Email:</label>
@@ -105,7 +110,9 @@ function Form(){
                         {/* <a href='' id='restore-psw'>Esqueci Minha Senha</a> */}
                     </form>
 
-                    <button type='submit' value="Submit" id='login-button' onClick={funciona}>Entrar</button>
+                    <button type='submit' value="Submit" id='login-button' onClick={funciona}>{loading}</button>
+                    {/* <button type='submit' value="Submit" id='login-button2' onClick={funciona}>{loading}</button> */}
+
 
                     <div className='register-div'>
                         <h3>Não tem conta? Cadastre-se</h3>

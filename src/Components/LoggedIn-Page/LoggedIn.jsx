@@ -1,16 +1,21 @@
 import './loggedIn.css'
 
-import { useEffect } from 'react'
-import { useLocation } from "react-router-dom";
+// import {  useEffect } from 'react'
+import { useNavigate, useLocation } from "react-router-dom";
 ;
 
 function LoggedIn (){
 
     const location = useLocation();
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        // console.log(userInfo.nome)
-    });
+
+    const exitButton = () =>{
+        localStorage.removeItem("user");
+
+        navigate("/");
+    };
+    
     const userInfo  = location.state?.userInfo || "Não encontrado";
 
     const dataOriginal = new Date(userInfo.dta_nascimento);
@@ -53,6 +58,11 @@ function LoggedIn (){
                         </div>
 
                     </div>
+
+                <button type='submit' value="button" id='exit-button' onClick={exitButton}>Sair</button>
+
+
+                    
 
                 </div>
 
