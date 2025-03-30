@@ -1,6 +1,6 @@
 import './form.css'
 import { useNavigate } from "react-router-dom";
-import { useState} from "react";
+import { useState, useEffect} from "react";
 import axios from 'axios'
 
 
@@ -23,13 +23,14 @@ function Form(){
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
+    var user;
+
     const funciona = async () => {
         
         const formattedData = {
             email: formData.email,
             senha: formData.senha,
         };
-        var user;
 
         try {
             const response = await axios.post(
@@ -42,6 +43,8 @@ function Form(){
 
             setuserInfo(user)
             
+            localStorage.setItem("user", JSON.stringify(user));
+
             console.log(response.data);
             console.log(response.status);
 
@@ -56,7 +59,24 @@ function Form(){
             navigate("/loggedIn", { state: { userInfo: user } });
         }
     };
-    
+
+    // useEffect(() => {
+    //     if (userInfo) {
+    //         navigate("/loggedIn", { state: { userInfo } } );
+    //     }
+    // }, [userInfo, navigate]);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+
+        if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            setuserInfo(parsedUser);
+
+            navigate("/loggedIn", { state: { userInfo: userInfo } });
+        }
+    }, [userInfo, navigate]);
+
 
     return(
         
@@ -70,7 +90,7 @@ function Form(){
                         <h1>Acesse Sua Conta</h1>
                         <h2>Facilite seu acesso logando na sua conta</h2>
                     </section>
-                    {/* onSubmit={acessButton} */}
+
                     <form id='form-page1'  >
                         <div className='category-page1'>
                             <label htmlFor='email' className='label-page1'>Email:</label>
@@ -82,7 +102,7 @@ function Form(){
                             <input type="text" name="senha" id='psw' placeholder='Digite sua Senha' value={formData.senha} onChange={selectValue} required/>
                         </div>
                     
-                        <a href='' id='restore-psw'>Esqueci Minha Senha</a>
+                        {/* <a href='' id='restore-psw'>Esqueci Minha Senha</a> */}
                     </form>
 
                     <button type='submit' value="Submit" id='login-button' onClick={funciona}>Entrar</button>
