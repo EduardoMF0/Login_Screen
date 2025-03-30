@@ -18,22 +18,22 @@ function Form(){
     });
     const [, setuserInfo] = useState({});
     const [loading, setLoading] = useState('Entrar');
+    const [alertTxt, setAlertText] = useState("");
+
 
     const selectValue = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
-    const load = () =>{
-        const esse = (<><img src={imgLoad} alt="Carregando" id='load-svg'/></>);;
-        setLoading(esse)
-    }
+
 
     var user;
 
     const funciona = async () => {
-        
-        load();
 
+        setLoading(<><img src={imgLoad} alt="Carregando" id='load-svg'/></>)
+        setAlertText("")
+        
         const formattedData = {
             email: formData.email,
             senha: formData.senha,
@@ -60,8 +60,20 @@ function Form(){
             }
             catch (error) {
                 console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-            }
-        
+                
+                if (error.response || error.request) {
+                    setAlertText("Erro no servidor! Tente novamente mais tarde.");    
+                }
+
+                if (error.response) {
+                    if (error.response.status === 404) {
+                        setAlertText("Erro! Email e/ou Senha não encontrados.");
+                    } 
+                }
+
+            setLoading("Entrar")
+        }
+
         if(status == 200){
             navigate("/loggedIn", { state: { userInfo: user } });
         }
@@ -91,10 +103,10 @@ function Form(){
                         <h2>Facilite seu acesso logando na sua conta</h2>
                     </section>
 
-                    {/* <div id="alert-login">
+                    <div id="alert-login">
                         <div id="background"></div>
-                        <p>ALERTA</p>
-                    </div> */}
+                        <p>{alertTxt}</p>
+                    </div>
 
                     <form id='form-page1'  >
                         <div className='category-page1'>
