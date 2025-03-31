@@ -19,8 +19,9 @@ namespace ApiCrud.Data
             _context.SaveChanges();
         }        
 
-          public List<User> GetVerify(string email)
+          public List<User> GetVerifyDb(string email)
         {
+
             var query = _context.Users.AsQueryable();
 
             query = query.Where(u => (u.email == email));
@@ -32,7 +33,7 @@ namespace ApiCrud.Data
           {
             var query = _context.Users.AsQueryable();
 
-            query = query.Where(u => (u.email == email) && (u.senha == senha));
+/*            query = query.Where(u => (u.email == email) && (u.senha == senha));*/
 
             return query.ToList();
           }

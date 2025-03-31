@@ -1,6 +1,6 @@
 ﻿using ApiCrud.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography;
+using BCrypt.Net;
 
 namespace ApiCrud.Controllers
 {
@@ -16,7 +16,7 @@ namespace ApiCrud.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> addDbUser([FromBody] UserAdd userAdd) {
 
             if (userAdd == null)
@@ -41,14 +41,14 @@ namespace ApiCrud.Controllers
         public async Task<IActionResult> GetVerify(string email)
         {
 
-            var users = _userRepository.GetVerify(email);
+            var users = _userRepository.GetVerifyDb(email);
 
             if (users.Any())
             {
                 return Ok();
             }
 
-            return NotFound(users);
+            return NotFound();
 
         }
 
@@ -63,7 +63,7 @@ namespace ApiCrud.Controllers
                 return Ok(users);
             }
 
-            return NotFound(new { Message = "Problemas" });
+            return NotFound();
 
 
         }

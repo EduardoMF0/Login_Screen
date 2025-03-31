@@ -19,9 +19,11 @@ namespace ApiCrud.Models
         public DateTime dta_nascimento { get; set; }
 
         public DateTime dta_criacaoconta { get; set; }
-        public UserAdd()
+
+        public UserAdd(string senha)
         {
 
         }
+
     }
 }
