@@ -73,6 +73,8 @@
     position: absolute;
     font-weight: bold;
     background-color: #faf9de;
+    border: 0.2vw solid #f6f5d2;
+    border-radius: 0.3vh;
     padding: 0.3vw;  
 }
 

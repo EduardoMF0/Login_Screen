@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import './Register.css'
+import imgLoad from '/src/assets/load.svg';
 
 function Register(){
 
@@ -22,6 +23,8 @@ function Register(){
     const [confirmPsw, setConfirmpsw] = useState("");
     const [type, setTipo] = useState("password");
     const [imagem, setImagem] = useState("src/assets/eye-slash.svg"); 
+    const [loading, setLoading] = useState('Criar Conta');
+    const [cursor, setCursor] = useState({cursor:'pointer'})
 
 
 // ----- Start Get API BR states
@@ -73,8 +76,12 @@ function Register(){
             };
         
             try {
+
+                setLoading(<><img src={imgLoad} alt="Carregando" id='load-svg'/></>)
+                setCursor({cursor:'wait'})
+                
                 const response = await axios.post(
-                    "https://localhost:7107/api/user",
+                    "https://localhost:7107/api/user/register",
                     formattedData,
                     { headers: { "Content-Type": "application/json" } } 
                 );
@@ -83,7 +90,11 @@ function Register(){
                 console.log(response.status);
                 console.log(response.statusText);
                 alert("deu certo");
-
+                
+                setTimeout(()=>{
+                    ToLogin()
+                },2000)
+                
             }
                 catch (error) {
                     console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
@@ -98,7 +109,10 @@ function Register(){
                         estado: "",
                         dta_nascimento: ""
                     });
+
                     setConfirmpsw("");
+                    setLoading("Criara Conta")
+                    setCursor({cursor:'auto'})
                 };      
         };
     };
@@ -135,7 +149,7 @@ function Register(){
     return(
 
     <div > 
-        <div id="background-page2">
+        <div id="background-page2" >
 
             <div className="box-page2">
                 
@@ -190,7 +204,7 @@ function Register(){
                         <input type="password" placeholder='Confirme sua Senha' id='passwordConfirm' value={confirmPsw} onChange={selectValuePsw} required/>
                     </div>    
 
-                    <button type='submit' id='register-button'>Criar Conta</button>
+                    <button type='submit' id='register-button' style={cursor}>{loading}</button>
                     
                 </form>
             </div>

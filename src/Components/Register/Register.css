@@ -83,6 +83,8 @@ h1, h2{
     position: absolute;
     font-weight: bold;
     background-color: #faf9de;
+    border: 0.2vw solid #f6f5d2;
+    border-radius: 0.3vh;
     padding: 0.3vw;  
 }
 
@@ -169,7 +171,7 @@ input::placeholder{
 }
 
 #register-button {
-    background-color: var(--color-purple1); 
+    /* background-color: var(--color-purple1); 
     color: white;
     border: none;
     font-size: clamp(14px, 0.3rem + 1vw, 4vw);
@@ -177,6 +179,25 @@ input::placeholder{
 
     margin-top: 2.5vh;
     padding: 2.2vh 12vw;
+    border-radius: 0.6vw;
+    cursor: pointer;
+
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease-in-out;  */
+
+    margin: 0 auto;
+    margin-top: 2.5vh;
+    background-color: var(--color-purple1); 
+    border: none;
+    width: 30.5vw;
+    height: 7.7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: clamp(14px, 0.3rem + 1vw, 4vw);
+    font-weight: bold;
     border-radius: 0.6vw;
     cursor: pointer;
 
