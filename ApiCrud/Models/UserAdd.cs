@@ -3,7 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiCrud.Models
 {
+
     [Table("usuarios_registrados")]
+
     public class UserAdd
     {
         public long id { get; private set; }

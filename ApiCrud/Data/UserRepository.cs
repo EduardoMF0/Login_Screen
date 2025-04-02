@@ -33,7 +33,7 @@ namespace ApiCrud.Data
           {
             var query = _context.Users.AsQueryable();
 
-/*            query = query.Where(u => (u.email == email) && (u.senha == senha));*/
+            query = query.Where(u => (u.email == email) && (u.senha == senha));
 
             return query.ToList();
           }

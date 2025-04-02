@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BCrypt.Net;
 
+
 namespace ApiCrud.Controllers
 {
     [ApiController]
@@ -17,14 +18,14 @@ namespace ApiCrud.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> addDbUser([FromBody] UserAdd userAdd) {
+        public IActionResult addDbUser([FromBody] UserAdd userAdd) {
 
             if (userAdd == null)
                 return BadRequest("Os dados enviados são inválidos!");
 
             var user = new User(userAdd.nome, userAdd.email, userAdd.senha, userAdd.estado, userAdd.dta_nascimento);
 
-            var getSeExist = await GetVerify(userAdd.email);
+            var getSeExist =  GetVerify(userAdd.email);
 
             if (getSeExist is NotFoundResult)
             {
@@ -33,12 +34,12 @@ namespace ApiCrud.Controllers
                 return Ok(new { Message = "Funcionando !!!" });
             }
 
-            return BadRequest(new { Message = "Esse email já está cadastrado!" });
+            return BadRequest(new { Message = userAdd.nome, userAdd.email, userAdd.senha });
 
         }
 
         [HttpGet("verify/{email}")]
-        public async Task<IActionResult> GetVerify(string email)
+        public IActionResult GetVerify(string email)
         {
 
             var users = _userRepository.GetVerifyDb(email);
@@ -53,7 +54,7 @@ namespace ApiCrud.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
+        public IActionResult Login([FromBody] UserLogin userLogin)
         {
 
             var users = _userRepository.LoginVerifyDb(userLogin.email, userLogin.senha);
