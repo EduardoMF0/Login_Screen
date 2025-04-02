@@ -43,7 +43,7 @@ namespace ApiCrud.Controllers
         {
 
             var users = _userRepository.GetVerifyDb(email);
-
+            
             if (users.Any())
             {
                 return Ok();
