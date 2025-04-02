@@ -10,7 +10,7 @@ namespace ApiCrud.Models
     {
         public long id { get; private set; }
 
-        public string? nome { get; set; }
+        public string? nome { get; set; } = string.Empty;
 
         [Required]
         public string email { get; set; }
@@ -18,7 +18,7 @@ namespace ApiCrud.Models
         [Required]
         public string senha { get; set; }
 
-        public string? estado { get; set; }
+        public string? estado { get; set; } = string.Empty;
 
         [Required]
         public DateTime dta_nascimento { get; set; }

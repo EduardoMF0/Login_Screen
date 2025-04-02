@@ -23,7 +23,7 @@ namespace ApiCrud.Controllers
             if (userAdd == null)
                 return BadRequest("Os dados enviados são inválidos!");
 
-            var user = new User(userAdd.nome, userAdd.email, userAdd.senha, userAdd.estado, userAdd.dta_nascimento);
+            var user = new User(userAdd.nome ?? "", userAdd.email, userAdd.senha, userAdd.estado ?? "", userAdd.dta_nascimento);
 
             var getSeExist =  GetVerify(userAdd.email);
 

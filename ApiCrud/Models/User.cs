@@ -41,10 +41,6 @@ namespace ApiCrud.Models
             this.dta_nascimento = dta_nascimento;
             dta_criacaoconta = DateTime.UtcNow;
         }
-/*        email ?? throw new ArgumentNullException(nameof(email)); ;
-        senha ?? throw new ArgumentNullException(nameof(senha)); ;
-
-        estado ?? throw new ArgumentNullException(nameof(estado)); ;*/
 
     }
 }
