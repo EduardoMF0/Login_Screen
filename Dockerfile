@@ -20,7 +20,7 @@ RUN dotnet restore
 
 # Copia todo o código-fonte e compila o projeto
 COPY . .
-RUN dotnet build -c $BUILD_CONFIGURATION --no-self-contained -o /app/build
+RUN dotnet build -c $BUILD_CONFIGURATION --no-self-contained -o /app/build /p:UseAppHost=false
 
 # Publica os arquivos compilados (corrigindo erro de diretório)
 FROM build AS publish
