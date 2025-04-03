@@ -13,10 +13,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copia o arquivo de projeto para a pasta correta
+# Copia o arquivo de projeto e executa restore
 COPY ["ApiCrud/ApiCrud.csproj", "./ApiCrud/"]
-
-# Define o diretório correto antes de rodar restore
 WORKDIR "/src/ApiCrud"
 RUN dotnet restore
 
@@ -24,18 +22,12 @@ RUN dotnet restore
 COPY . .
 RUN dotnet build -c $BUILD_CONFIGURATION --no-self-contained -o /app/build
 
-# Publica os arquivos compilados
+# Publica os arquivos compilados (corrigindo erro de diretório)
 FROM build AS publish
-RUN dotnet publish -c $BUILD_CONFIGURATION --no-self-contained -o /app/publish
+RUN dotnet publish -c $BUILD_CONFIGURATION --no-self-contained -o /app/publish /p:UseAppHost=false
 
 # Usa o runtime do .NET para rodar a API
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ApiCrud.dll"]
-
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ApiCrud.dll"]
-
-
