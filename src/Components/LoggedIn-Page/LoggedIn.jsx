@@ -16,11 +16,25 @@ function LoggedIn (){
         navigate("/");
     };
     
-    const userInfo  = location.state?.userInfo || "Não encontrado";
+    var userInfo  = location.state?.userInfo;
 
-    const dataOriginal = new Date(userInfo.dta_nascimento);
-    const dataFormat = new Intl.DateTimeFormat("pt-BR").format(dataOriginal);
-    
+
+    console.log(userInfo)
+
+    if (!userInfo) {
+        const stored = localStorage.getItem("user");
+        if (stored) {
+            userInfo = JSON.parse(stored);
+        }
+    }
+
+    console.log(userInfo);
+
+    if (userInfo.dta_nascimento && !isNaN(new Date(userInfo.dta_nascimento))) {
+        var dataFormat = new Date(userInfo.dta_nascimento);
+        dataFormat = new Intl.DateTimeFormat("pt-BR").format(dataFormat);
+    }
+
     return(
         <div>
             <div id="background-page">
@@ -60,10 +74,7 @@ function LoggedIn (){
                     </div>
 
                 <button type='submit' value="button" id='exit-button' onClick={exitButton}>Sair</button>
-
-
-                    
-
+                
                 </div>
 
             </div>

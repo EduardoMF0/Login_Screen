@@ -81,7 +81,8 @@ function Register(){
                 setCursor({cursor:'wait'})
                 
                 const response = await axios.post(
-                    "https://localhost:7107/api/user/register",
+                    // "https://localhost:7107/api/user/register",
+                    "http://localhost:5009/api/user/register",
                     formattedData,
                     { headers: { "Content-Type": "application/json" } } 
                 );

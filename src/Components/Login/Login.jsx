@@ -1,4 +1,4 @@
-import './form.css'
+import './login.css'
 import imgLoad from '/src/assets/load.svg';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect} from "react";
@@ -41,18 +41,18 @@ function Form(){
 
         try {
             const response = await axios.post(
-                "https://localhost:7107/api/user/login",
+                "http://localhost:5009/api/user/login",
                 formattedData,
                 { headers: { "Content-Type": "application/json" } } 
             ) 
         
-            user = response.data[0];
+            const user = response.data;
 
             setuserInfo(user)
             
             localStorage.setItem("user", JSON.stringify(user));
 
-            console.log(response.data);
+            console.log(user);
             console.log(response.status);
 
             var status = response.status;
@@ -61,13 +61,13 @@ function Form(){
             catch (error) {
                 console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
                 
-                if (error.response || error.request) {
+                if (error.request) {
                     setAlertText("Erro no servidor! Tente novamente mais tarde.");    
                 }
 
                 if (error.response) {
-                    if (error.response.status === 404) {
-                        setAlertText("Erro! Email e/ou Senha não encontrados.");
+                    if (error.response.status == 404 || error.response.status == 400) {
+                        setAlertText("Email e/ou Senha incorretos.");
                     } 
                 }
 
