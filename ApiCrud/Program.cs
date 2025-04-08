@@ -43,6 +43,7 @@ app.UseCors("AllowAll"); // Ativar CORS
     app.UseSwagger();
     app.UseSwaggerUI();
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

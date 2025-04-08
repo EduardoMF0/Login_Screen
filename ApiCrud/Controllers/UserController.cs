@@ -1,6 +1,6 @@
-﻿using ApiCrud.Models;
+﻿using ApiCrud.Data;
+using ApiCrud.Models;
 using Microsoft.AspNetCore.Mvc;
-using BCrypt.Net;
 
 
 namespace ApiCrud.Controllers
@@ -18,54 +18,41 @@ namespace ApiCrud.Controllers
 
 
         [HttpPost("register")]
-        public IActionResult addDbUser([FromBody] UserAdd userAdd) {
+        public IActionResult addDbUser([FromBody] UserAdd userData) {
 
-            if (userAdd == null)
-                return BadRequest("Os dados enviados são inválidos!");
+            var existing = _userRepository.LoginVerifyDb(userData.email);
 
-            var user = new User(userAdd.nome ?? "", userAdd.email, userAdd.senha, userAdd.estado ?? "", userAdd.dta_nascimento);
-
-            var getSeExist =  GetVerify(userAdd.email);
-
-            if (getSeExist is NotFoundResult)
+            if (existing == null)
             {
-                _userRepository.add(user);
-
-                return Ok(new { Message = "Funcionando !!!" });
+                return BadRequest(new { Message = userData.nome, userData.email, userData.senha });
             }
 
-            return BadRequest(new { Message = userAdd.nome, userAdd.email, userAdd.senha });
+            var user = new User(userData.nome ?? "", userData.email, userData.senha, userData.estado ?? "", userData.dta_nascimento);
 
-        }
-
-        [HttpGet("verify/{email}")]
-        public IActionResult GetVerify(string email)
-        {
-
-            var users = _userRepository.GetVerifyDb(email);
+            return Ok(new { Message = "Funcionando !!!" });
             
-            if (users.Any())
-            {
-                return Ok();
-            }
-
-            return NotFound();
-
         }
+
 
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserLogin userLogin)
         {
 
-            var users = _userRepository.LoginVerifyDb(userLogin.email, userLogin.senha);
-
-            if (users.Any())
+            if (!ModelState.IsValid)
             {
-                return Ok(users);
+                return BadRequest(ModelState); // Mostra exatamente o que está errado
             }
 
-            return NotFound();
+            var user = _userRepository.LoginVerifyDb(userLogin.email);
 
+            bool senhaValida = PasswordControl.VerifyPassword(userLogin.senha, user.senha);
+
+            if (user == null || !PasswordControl.VerifyPassword(userLogin.senha, user.senha))
+            {
+                return BadRequest(new { Message = "Email e/ou Senha incorretos" });
+            }
+
+            return Ok(user); ;
 
         }
 

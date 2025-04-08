@@ -10,10 +10,10 @@ namespace ApiCrud.Models
         [Required]
         public string senha { get; set; }
 
-        public UserLogin(string email, string senha)
+/*        public UserLogin(string email, string senha)
         {
             this.email = email ?? throw new ArgumentNullException(nameof(email)); 
             this.senha = senha ?? throw new ArgumentNullException(nameof(senha)); 
-        }
+        }*/
     }
 }

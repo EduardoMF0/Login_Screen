@@ -19,23 +19,10 @@ namespace ApiCrud.Data
             _context.SaveChanges();
         }        
 
-          public List<User> GetVerifyDb(string email)
+        public User? LoginVerifyDb(string email)
         {
+            return _context.Users.FirstOrDefault(u => u.email == email);
 
-            var query = _context.Users.AsQueryable();
-
-            query = query.Where(u => (u.email == email));
-
-            return query.ToList();
         }
-
-        public List<User> LoginVerifyDb(string email, string senha)
-          {
-            var query = _context.Users.AsQueryable();
-
-            query = query.Where(u => (u.email == email) && (u.senha == senha));
-
-            return query.ToList();
-          }
     }
 }

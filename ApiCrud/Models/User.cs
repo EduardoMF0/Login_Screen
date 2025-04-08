@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ApiCrud.Data;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using BCrypt.Net;
-using static BCrypt.Net.BCrypt;
 
 
 namespace ApiCrud.Models
@@ -13,6 +12,7 @@ namespace ApiCrud.Models
     {
 
         [Key]
+        [JsonIgnore]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; private set; }
 
@@ -21,7 +21,7 @@ namespace ApiCrud.Models
         public string email { get; set; }
 
         [JsonIgnore]
-        public string senha { get;  private set; }
+        public string senha { get; set; }
 
         public string? estado { get; set; }
 
@@ -32,11 +32,13 @@ namespace ApiCrud.Models
         [JsonIgnore]
         public DateTime dta_criacaoconta { get; set; }
 
+        public User() { }
+
         public User(string nome, string email, string senha, string estado, DateTime dta_nascimento)
         {
             this.nome = nome;
             this.email = email;
-            this.senha = senha;
+            this.senha = PasswordControl.HashPassword(senha);
             this.estado = estado;
             this.dta_nascimento = dta_nascimento;
             dta_criacaoconta = DateTime.UtcNow;
