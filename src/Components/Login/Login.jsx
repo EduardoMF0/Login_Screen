@@ -123,8 +123,6 @@ function Form(){
                     </form>
 
                     <button type='submit' value="Submit" id='login-button' onClick={funciona}>{loading}</button>
-                    {/* <button type='submit' value="Submit" id='login-button2' onClick={funciona}>{loading}</button> */}
-
 
                     <div className='register-div'>
                         <h3>Não tem conta? Cadastre-se</h3>
