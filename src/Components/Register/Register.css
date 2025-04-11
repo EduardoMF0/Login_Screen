@@ -1,6 +1,4 @@
 #background-page2{
-    /* background-color: var(--color-background);   */
-    background: rgb(193,128,231);
     background: var(--background-gradient);
 }
 
@@ -113,7 +111,8 @@ h1, h2{
     color: var(--color-font);
     margin-bottom: 1vh;
 
-    font-size: clamp(14px, 0.7rem + 0.7vw, 4vw);
+    /* font-size: clamp(14px, 0.7rem + 0.7vw, 4vw); */
+    font-size: calc(0.7rem + 0.7vw);
     font-weight: bold;
 }
 
@@ -127,7 +126,8 @@ h1, h2{
 }
 
 #form-page2 input{
-    padding: 1.5vh;
+    padding: calc(0.7vh + 0.3vw);
+    font-size: calc(0.9vw + 0.3rem);
     width: 100%;
     border-radius: 0.4vw;
     border: 0.2vw solid transparent;
@@ -148,43 +148,40 @@ input::placeholder{
     width: 64%;
     margin-bottom:3.7vh;
 }
+
+#state-date > #date-div-page2{
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+}
+
 #date-div-page2 > input{
-    margin-top: 1vh;
-    width: 45%;
+    width: 46%;
 }
 #state-date > div:nth-child(2){
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.5vw;
+
+    padding: calc(0.7vh + 0.3vw);
+    font-size: calc(0.9vw + 0.3rem);
 }
 
 #form-page2 select{
-    padding: 1.5vh;
+    padding: calc(0.9vh + 0.5vw);
     border-radius: 0.4vw;
     border: 0.2vw solid transparent;
     background-color: var(--color-gray);
     outline: none; 
+    font-size: calc(0.9vw + 0.3rem);
 }
 #state-date select:focus{
     border: 0.2vw solid var(--color-purple2);
 }
 
 #register-button {
-    /* background-color: var(--color-purple1); 
-    color: white;
-    border: none;
-    font-size: clamp(14px, 0.3rem + 1vw, 4vw);
-    font-weight: bold;
-
-    margin-top: 2.5vh;
-    padding: 2.2vh 12vw;
-    border-radius: 0.6vw;
-    cursor: pointer;
-
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); 
-    transition: all 0.3s ease-in-out;  */
-
     margin: 0 auto;
     margin-top: 2.5vh;
     background-color: var(--color-purple1); 
@@ -208,3 +205,39 @@ input::placeholder{
     background-color: var(--color-purple2); 
     transform: scale(1.05);
   }
+
+  @media screen and (min-width: 2038px){
+    .title-page2 > h1{
+        font-size: calc(2vw + 1.1rem);
+        margin-bottom: 1.1vh;
+    }
+    .title-page2 > h2{
+        font-size: calc(0.7vw + 0.8rem);
+    }
+
+    #form-page2 input{
+        padding: calc(1vh + 0.3vw);
+        font-size: calc(1vw + 0.4rem);
+    }
+
+    #form-page2 label{
+        font-size: calc(0.7vw + 0.8rem);
+    }
+  }
+
+  @media screen and (min-width: 4077px){
+    .title-page2 > h1{
+        font-size: calc(2.4vw + 1.4rem);
+        margin-bottom: 1.1vh;
+    }
+    .title-page2 > h2{
+        font-size: calc(0.9vw + 0.8rem);
+    }
+    
+    #form-page2 label{
+        font-size: calc(0.9vw + 0.9rem);
+    }
+  }
+
+
+
