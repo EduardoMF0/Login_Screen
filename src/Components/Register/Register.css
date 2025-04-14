@@ -1,9 +1,11 @@
 #background-page2{
     background: var(--background-gradient);
+    min-height: 100vh;
+
 }
 
 .box-page2 {
-    height: 100%;
+    min-height: 100vh;
     width: 50vw;
     margin: 0 auto;
     display: flex;
@@ -205,6 +207,78 @@ input::placeholder{
     background-color: var(--color-purple2); 
     transform: scale(1.05);
   }
+
+
+@media screen and (max-width: 425px){
+    .box-page2 {
+        width: 98vw;
+        background-color: red;
+    }
+
+    .title-page2 > h1{
+        font-size: clamp(20px, 2.8vw + 1.1rem, 6vw);
+    }
+
+    .title-page2 > h2 {
+        font-size: clamp(14px, 0.5vw + 0.5rem, 4vw);
+    }
+
+    #form-page2 {
+        width: 115%;
+    }
+
+    #form-page2 label {
+        font-size: clamp(10px, 1.4vw + 0.8rem, 4vw);
+    }
+
+    #form-page2 input {
+        padding: clamp(3px, 1.2vh + 0.5vw, 3vw);
+        font-size: calc(2.2vw + 0.3rem);
+    }
+
+    #form-page2 select {
+        font-size: clamp(10px, 2vw + 0.3rem, 3vw);
+    }
+}
+
+/* @media screen and (max-width: 768px){ */
+@media screen and (max-width: 768px) and (min-width: 426px) {
+    .box-page2 {
+        width: 98vw;
+        background-color: greenyellow;
+    }
+
+    #back-button {
+        width: 5vw;
+        height: 5vw;
+    }
+    
+    .title-page2 > h1{
+        font-size: clamp(20px, 2.4vw + 1.1rem, 4vw);
+    }
+
+    .title-page2 > h2{
+        font-size: clamp(14px, 0.5vw + 0.5rem, 4vw);
+    }
+
+    #form-page2 label{
+        font-size: calc(1vw + 0.7rem);
+    }
+
+    #form-page2 input{
+        padding: calc(1.1vh + 0.3vw);
+        font-size: calc(1.4vw + 0.3rem);
+    }
+
+    #date-div-page2 > input {
+        width: 65%;
+    }
+
+    #form-page2 select{
+        font-size: calc(1.2vw + 0.3rem);
+    }
+}
+
 
   @media screen and (min-width: 2038px){
     .title-page2 > h1{
