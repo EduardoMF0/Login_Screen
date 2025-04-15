@@ -55,7 +55,6 @@
 }
 #alert-login p{
     font-size: calc(1.1vw);
-    /* font-size: clamp(12px, 2.4vw + 0.3rem, 5vw); */
     color: #ff3d3d;    
     position: absolute;
     font-weight: bold;
@@ -84,14 +83,12 @@
 
 .category-page1 input{
     padding: clamp(12px, 0.7vh + 0.3vw, 6vh);
-    /* padding: calc(0.7vh + 0.3vw); */
 
     border-radius: 0.4vw;
     border: 0.2vw solid transparent;
     outline: none;
     background-color: #e1e1e1;
     font-size: clamp(12px, 0.9vw + 0.3rem, 5vw);
-    /* font-size:calc(0.9vw + 0.3rem) */
 }
 
 .category-page1 input:focus{
@@ -162,7 +159,6 @@ h3{
   @media screen and (max-width: 425px){
     .box-page1 {
         width: 98vw;
-        /* background-color: green; */
     }
 
     #alert-login{
@@ -202,7 +198,6 @@ h3{
   @media screen and (max-width: 1024px) and (min-width: 426px) {
     .box-page1 {
         width: 80vw;
-        /* background-color: yellow; */
     }
 
     #alert-login p{

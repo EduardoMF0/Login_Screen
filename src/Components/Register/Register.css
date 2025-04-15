@@ -1,7 +1,6 @@
 #background-page2{
     background: var(--background-gradient);
     min-height: 100vh;
-
 }
 
 .box-page2 {
@@ -113,7 +112,6 @@ h1, h2{
     color: var(--color-font);
     margin-bottom: 1vh;
 
-    /* font-size: clamp(14px, 0.7rem + 0.7vw, 4vw); */
     font-size: calc(0.7rem + 0.7vw);
     font-weight: bold;
 }
@@ -210,8 +208,20 @@ input::placeholder{
 
 
 @media screen and (max-width: 425px){
+    #background-page2 {
+        min-width: 100%;
+    }
+
+    #back-button {
+        width: 10vw;
+        height: 10vw;
+    }
+    #back-button::after {
+        font-size: 7vw;
+    }
+
     .box-page2 {
-        width: 98vw;
+        min-width: 97%;
         background-color: red;
     }
 
@@ -225,26 +235,45 @@ input::placeholder{
 
     #form-page2 {
         width: 115%;
+        margin-bottom: 10vh;
     }
 
     #form-page2 label {
-        font-size: clamp(10px, 1.4vw + 0.8rem, 4vw);
+        font-size: clamp(10px, 1.7vw + 0.8rem, 4vw);
     }
 
     #form-page2 input {
-        padding: clamp(3px, 1.2vh + 0.5vw, 3vw);
-        font-size: calc(2.2vw + 0.3rem);
+        padding: clamp(8px, 1.4vh + 0.5vw, 3vw);
+        font-size: calc(2.5vw + 0.3rem);
+    }
+
+    #date-div-page2 > input {
+        width: 65%;
+        min-width: 32vw;
     }
 
     #form-page2 select {
         font-size: clamp(10px, 2vw + 0.3rem, 3vw);
     }
+
+    #form-page2 #show-eye {
+        left: 89%;
+    }
+
+    #register-button {
+        width: 50vw;
+        height: 8vh;
+        border-radius: 1vw;
+    }
 }
 
-/* @media screen and (max-width: 768px){ */
 @media screen and (max-width: 768px) and (min-width: 426px) {
+    #back-button::after {
+        font-size: 4vw;
+    }
+
     .box-page2 {
-        width: 98vw;
+        min-width: 97%;
         background-color: greenyellow;
     }
 
@@ -271,11 +300,15 @@ input::placeholder{
     }
 
     #date-div-page2 > input {
-        width: 65%;
+        width: 40%;
     }
 
     #form-page2 select{
         font-size: calc(1.2vw + 0.3rem);
+    }
+
+    #form-page2 #show-eye {
+        left: 94%;
     }
 }
 
