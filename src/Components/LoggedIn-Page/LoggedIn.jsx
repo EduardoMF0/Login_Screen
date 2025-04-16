@@ -40,7 +40,7 @@ function LoggedIn (){
             <div id="background-page">
                 
                 <div className="box-page">
-                    <img src='./src\assets\icon.jpg' alt='' id='icon'></img>
+                    <img src='/icon.jpg' alt='' id='icon'></img>
                     
                     <div className='data-box'>
                         <div className='box'>

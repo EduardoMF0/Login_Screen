@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import './Register.css'
-import imgLoad from '/src/assets/load.svg';
+// import imgLoad from '/src/assets/load.svg';
 
 function Register(){
 
@@ -77,7 +77,7 @@ function Register(){
         
             try {
 
-                setLoading(<><img src={imgLoad} alt="Carregando" id='load-svg'/></>)
+                setLoading(<><img src={"/load.svg"} alt="Carregando" id='load-svg'/></>)
                 setCursor({cursor:'wait'})
                 
                 const response = await axios.post(

@@ -1,5 +1,5 @@
 import './login.css'
-import imgLoad from '/src/assets/load.svg';
+// import imgLoad from '/src/assets/load.svg';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect} from "react";
 import axios from 'axios'
@@ -31,7 +31,7 @@ function Form(){
 
     const funciona = async () => {
 
-        setLoading(<><img src={imgLoad} alt="Carregando" id='load-svg'/></>)
+        setLoading(<><img src={"/load.svg"} alt="Carregando" id='load-svg'/></>)
         setAlertText("")
         
         const formattedData = {
