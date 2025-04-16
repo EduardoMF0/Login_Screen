@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import './Register.css'
-import imgLoad from '../src/assets/load.svg';
+// import imgLoad from '../src/assets/load.svg';
+import imgLoad from '../../assets/load.svg';
+
 
 function Register(){
 
