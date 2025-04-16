@@ -22,7 +22,7 @@ function Register(){
     });
     const [confirmPsw, setConfirmpsw] = useState("");
     const [type, setTipo] = useState("password");
-    const [imagem, setImagem] = useState("src/assets/eye-slash.svg"); 
+    const [imagem, setImagem] = useState("/eye-slash.svg"); 
     const [loading, setLoading] = useState('Criar Conta');
     const [cursor, setCursor] = useState({cursor:'pointer'})
     
@@ -126,10 +126,10 @@ function Register(){
         const trocarImagem = () => {
           if (type === "password") {
             setTipo("text");
-            setImagem("/assets/eye.svg");
+            setImagem("/eye.svg");
           } else {
             setTipo("password");
-            setImagem("/assets/eye-slash.svg"); 
+            setImagem("/eye-slash.svg"); 
           }
         };
 
