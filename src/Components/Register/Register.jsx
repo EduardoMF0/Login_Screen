@@ -126,10 +126,10 @@ function Register(){
         const trocarImagem = () => {
           if (type === "password") {
             setTipo("text");
-            setImagem("/eye.svg");
+            setImagem("/assets/eye.svg");
           } else {
             setTipo("password");
-            setImagem("/eye-slash.svg"); 
+            setImagem("/assets/eye-slash.svg"); 
           }
         };
 
