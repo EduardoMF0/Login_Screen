@@ -2,9 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import './Register.css'
-// import imgLoad from '../src/assets/load.svg';
-import imgLoad from '/load.svg';
-
+import imgLoad from '../src/assets/load.svg';
 
 function Register(){
 
@@ -27,7 +25,7 @@ function Register(){
     const [imagem, setImagem] = useState("src/assets/eye-slash.svg"); 
     const [loading, setLoading] = useState('Criar Conta');
     const [cursor, setCursor] = useState({cursor:'pointer'})
-
+    
 
 // ----- Start Get API BR states
 
@@ -128,10 +126,10 @@ function Register(){
         const trocarImagem = () => {
           if (type === "password") {
             setTipo("text");
-            setImagem("src/assets/eye.svg");
+            setImagem("/eye.svg");
           } else {
             setTipo("password");
-            setImagem("src/assets/eye-slash.svg"); 
+            setImagem("/eye-slash.svg"); 
           }
         };
 
