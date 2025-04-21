@@ -1,5 +1,4 @@
 import './login.css'
-// import imgLoad from '/src/assets/load.svg';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect} from "react";
 import axios from 'axios'
@@ -19,21 +18,24 @@ function Form(){
     const [, setuserInfo] = useState({});
     const [loading, setLoading] = useState('Entrar');
     const [alertTxt, setAlertText] = useState("");
+    const [imagem, setImagem] = useState("/eye-slash.svg"); 
+    const [typeP, setTipo] = useState("password");
+    const [cursorLogin, setCursorLogin] = useState({cursor:'pointer'})
 
 
     const selectValue = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
-
-
     var user;
 
-    const funciona = async () => {
+    const Login_function = async () => {
 
         setLoading(<><img src={"/load.svg"} alt="Carregando" id='load-svg'/></>)
-        setAlertText("")
+        setAlertText("Aguarde...")
+        setCursorLogin({cursor:'wait'})
         
+
         const formattedData = {
             email: formData.email,
             senha: formData.senha,
@@ -71,6 +73,7 @@ function Form(){
                     } 
                 }
 
+            setCursorLogin({cursor:'auto'})
             setLoading("Entrar")
         }
 
@@ -89,6 +92,15 @@ function Form(){
         }
     }, [navigate]);
 
+    const trocarImagem = () => {
+        if (typeP === "password") {
+          setTipo("text");
+          setImagem("/eye.svg");
+        } else {
+          setTipo("password");
+          setImagem("/eye-slash.svg"); 
+        }
+      };
 
     return(
         
@@ -105,7 +117,9 @@ function Form(){
 
                     <div id="alert-login">
                         <div id="background"></div>
-                        <p>{alertTxt}</p>
+                        <p style={{ color: alertTxt === "Aguarde..." ? "#d8bf02" : "#ff3d3d" }}>
+                            {alertTxt}
+                        </p>                    
                     </div>
 
                     <form id='form-page1'  >
@@ -116,13 +130,14 @@ function Form(){
 
                         <div className='category-page1'>
                             <label htmlFor='psw' className='label-page1'>Senha:</label>
-                            <input type="text" name="senha" id='psw' placeholder='Digite sua Senha' value={formData.senha} onChange={selectValue} required/>
+                            <img src={imagem} alt="show" id="show-eye" onClick={trocarImagem}/>
+                            <input type={typeP} name="senha" id='psw' placeholder='Digite sua Senha' value={formData.senha} onChange={selectValue} required/>
                         </div>
                     
                         {/* <a href='' id='restore-psw'>Esqueci Minha Senha</a> */}
                     </form>
 
-                    <button type='submit' value="Submit" id='login-button' onClick={funciona}>{loading}</button>
+                    <button type='submit' value="Submit" id='login-button' onClick={Login_function} style={cursorLogin}>{loading}</button>
 
                     <div className='register-div'>
                         <h3>Não tem conta? Cadastre-se</h3>

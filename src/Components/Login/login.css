@@ -71,6 +71,7 @@
     display: flex;
     flex-direction: column;
 
+    position: relative;
     margin-bottom:3.7vh;
 }
 
@@ -95,6 +96,13 @@
     border: 0.2vw solid var(--color-purple2);
 }
 
+.category-page1 #show-eye{
+    height: 4.6vh;
+    cursor: pointer;
+    position: absolute;
+    top: 47%;
+    left: 91%;
+}
 
 #login-button {
     margin: 0 auto;
@@ -177,6 +185,11 @@ h3{
 
     .category-page1 input{
         border-radius: 1.3vw;
+        font-size: clamp(14px, 0.9vw + 0.3rem, 1.5vw);
+    }
+
+    .category-page1 #show-eye {
+        left: 89%;
     }
 
     #login-button{
@@ -227,8 +240,14 @@ h3{
     }
     
     .category-page1 input{
-        padding: clamp(11px, 0.8vh + 0.8vw, 1.3vw);
-        font-size: clamp(11px, 0.8vw + 0.8rem, 1.3vw);
+        padding: clamp(11px, 0.8vh + 0.6vw, 1.3vw);
+        font-size: clamp(14px, 0.9vw + 0.8rem, 1.5vw);
+    }
+
+    .category-page1 #show-eye {
+        height: 5.5vh;
+        top: 46%;
+        left: 93%;
     }
 
     #login-button {

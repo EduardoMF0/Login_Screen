@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import './Register.css'
-// import imgLoad from '/src/assets/load.svg';
 
 function Register(){
 
@@ -21,7 +20,7 @@ function Register(){
         dta_nascimento: ""
     });
     const [confirmPsw, setConfirmpsw] = useState("");
-    const [type, setTipo] = useState("password");
+    const [typeP, setTipo] = useState("password");
     const [imagem, setImagem] = useState("/eye-slash.svg"); 
     const [loading, setLoading] = useState('Criar Conta');
     const [cursor, setCursor] = useState({cursor:'pointer'})
@@ -81,8 +80,8 @@ function Register(){
                 setCursor({cursor:'wait'})
                 
                 const response = await axios.post(
-                    // "https://localhost:7107/api/user/register",
-                    "http://localhost:5009/api/user/register",
+                    "https://localhost:7107/api/user/register",
+                    // "http://localhost:5009/api/user/register",
                     formattedData,
                     { headers: { "Content-Type": "application/json" } } 
                 );
@@ -124,7 +123,7 @@ function Register(){
 // ----- Start Button show password
       
         const trocarImagem = () => {
-          if (type === "password") {
+          if (typeP === "password") {
             setTipo("text");
             setImagem("/eye.svg");
           } else {
@@ -134,17 +133,6 @@ function Register(){
         };
 
 // ----- END
-
-
-        // const [cor, setCor] = useState(``);
-
-        // const alert =() => {
-        //     if((formData.senha != ))
-        // }
-
-        // const mostrar = () =>{
-        //     return console.log(confirmPsw);
-        // }
 
         
     return(
@@ -197,7 +185,7 @@ function Register(){
                     <div className='category-page2'>
                         <label htmlFor='password'>Senha:</label>
                         <img src={imagem} alt="show" id="show-eye" onClick={trocarImagem}/>
-                        <input type={type} placeholder='Digite sua Senha' name="senha" id='password' value={formData.senha} onChange={selectValue} required/>
+                        <input type={typeP} placeholder='Digite sua Senha' name="senha" id='password' value={formData.senha} onChange={selectValue} required/>
                     </div>
                         
                     <div className='category-page2'>       
