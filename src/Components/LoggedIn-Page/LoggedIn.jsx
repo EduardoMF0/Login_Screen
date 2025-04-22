@@ -46,13 +46,13 @@ function LoggedIn (){
                         <div className='box'>
 
                             <div>
-                                <p>Nome:</p>
-                                <div className='outro'>{userInfo.nome}</div>
+                                <p id='first'>Nome:</p>
+                                <div className='category'>{userInfo.nome}</div>
                             </div>
                             
                             <div className='title'>
                                 <p>Email:</p>
-                                <div className='outro'>{userInfo.email}</div>
+                                <div className='category'>{userInfo.email}</div>
                             </div>
                            
                         </div>
@@ -61,12 +61,12 @@ function LoggedIn (){
 
                             <div>
                                 <p>Data de Nascimento</p>
-                                <div className='outro'>{dataFormat}</div>
+                                <div className='category'>{dataFormat}</div>
                             </div>
                             
                             <div className='title'>
                                 <p>Estado:</p>
-                                <div className='outro'>{userInfo.estado}</div>
+                                <div className='category'>{userInfo.estado}</div>
                             </div>
                             
                         </div>

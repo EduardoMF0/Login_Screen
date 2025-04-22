@@ -192,6 +192,10 @@ h3{
         left: 89%;
     }
 
+    #load-svg{
+        width: calc(17px + 5vw);
+    }
+
     #login-button{
         margin-top: 3%;
         width: 60vw;
