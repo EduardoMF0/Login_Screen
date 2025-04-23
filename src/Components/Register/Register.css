@@ -50,7 +50,7 @@
     margin-bottom: 1.1vh;
 }
 .title-page2 > h2{
-    font-size: clamp(14px, 0.5rem + 0.5vw, 4vw);
+    font-size: clamp(14px, 0.5rem + 0.8vw, 4vw);
     font-weight: 100;
     margin-bottom: 8.5vh;
 }
@@ -60,7 +60,7 @@ h1, h2{
     color: var(--color-font);
 }
 
-#alert{
+/* #alert{
     height: 30px;
     width: 100%;
     border-radius: 8px;
@@ -85,6 +85,30 @@ h1, h2{
     border: 0.2vw solid #f6f5d2;
     border-radius: 0.3vh;
     padding: 0.3vw;  
+} */
+
+#alert-re{
+    height: 30px;
+    width: 100%;
+    border-radius: 8px;
+
+    position: absolute;
+    right: 0%;
+    top: 17%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#alert-re > #background{
+    width: 50%;
+    height: 100%;
+    border-radius: 8px;
+}
+#alert-re p{
+    font-size: 1.1vw;
+    color: #ff3d3d;    
+    position: absolute;
+    font-weight: bold;
 }
 
 #form-page2{
@@ -231,6 +255,14 @@ input::placeholder{
     .title-page2 > h2 {
         font-size: clamp(14px, 0.5vw + 0.5rem, 4vw);
     }
+    
+    #alert-re p{
+        font-size: clamp(14px, 1.8vw + 0.3rem, 4vw);
+    }
+    
+    #alert-re{
+        top: 16vh;
+    }
 
     #form-page2 {
         width: 115%;
@@ -288,6 +320,13 @@ input::placeholder{
         font-size: clamp(14px, 0.5vw + 0.5rem, 4vw);
     }
 
+    #alert-re{
+        top: 17%;
+    }
+    #alert-re p{
+        font-size: clamp(14px, 1vw + 0.3rem, 4vw);
+    }
+
     #form-page2 label{
         font-size: calc(1vw + 0.7rem);
     }
@@ -317,7 +356,11 @@ input::placeholder{
         margin-bottom: 1.1vh;
     }
     .title-page2 > h2{
-        font-size: calc(0.7vw + 0.8rem);
+        font-size: calc(1vw + 0.5rem);
+    }
+
+    #alert-re{
+        top: 18%;
     }
 
     #form-page2 input{
@@ -336,7 +379,7 @@ input::placeholder{
         margin-bottom: 1.1vh;
     }
     .title-page2 > h2{
-        font-size: calc(0.9vw + 0.8rem);
+        font-size: calc(1.1vw + 0.6rem);
     }
     
     #form-page2 label{

@@ -20,13 +20,13 @@ function Register(){
         dta_nascimento: ""
     });
     const [confirmPsw, setConfirmpsw] = useState("");
-    const [typeP, setTipo] = useState("password");
+    const [typeP, setType] = useState("password");
     const [imagem, setImagem] = useState("/eye-slash.svg"); 
     const [loading, setLoading] = useState('Criar Conta');
     const [cursor, setCursor] = useState({cursor:'pointer'})
     
 
-// ----- Start Get API BR states
+    // ----- Start Get API BR states
 
     useEffect(() => {
         axios.get("https://brasilapi.com.br/api/ibge/uf/v1")
@@ -37,8 +37,9 @@ function Register(){
           .catch(error => console.error("Erro ao buscar os estados:", error)); 
     }, []);
     
-// ----- END
+    // ----- END
 
+    // ----- target input values
 
     const selectValue = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -48,24 +49,33 @@ function Register(){
         setConfirmpsw(e.target.value);
     }
 
+    // ----- END
 
-// ----- Start Post to API
+
+    // ----- Start Post to API
 
     const submitToApi = async (e) => {
         e.preventDefault();
 
+        setAlertText("Aguarde...")
+
         if(formData.senha != confirmPsw){
-            setAlertText(`Erro! "Senha" e "Confirmar Senhas são DIFERENTES.`);
+            setAlertText(`Erro! "Email e/ou Senha incorretos".`);
             setConfirmpsw("");
+            return;
         }
         else{
 
+            // verify date received
+            const anoNascimento = new Date(formData.dta_nascimento).getFullYear();
+            if (isNaN(anoNascimento) || anoNascimento < 1900 || anoNascimento > 2024) {
+                setAlertText("Erro! Data de nascimento inválido.");
+                return;
+            }    
+
             setAlertText("")
 
-            console.log("Botão submit clicado! Enviando requisição...");
-
-            console.log("Estado atual do formData:", formData);
-
+            // data to API
             const formattedData = {
                 nome: formData.nome,
                 email: formData.email,
@@ -80,59 +90,63 @@ function Register(){
                 setCursor({cursor:'wait'})
                 
                 const response = await axios.post(
-                    "https://localhost:7107/api/user/register",
-                    // "http://localhost:5009/api/user/register",
+                    "http://localhost:5009/api/user/register",
                     formattedData,
                     { headers: { "Content-Type": "application/json" } } 
                 );
-                
-                console.log(response.data);
+                        
                 console.log(response.status);
-                console.log(response.statusText);
-                alert("deu certo");
                 
+                // Navigate
                 setTimeout(()=>{
                     ToLogin()
                 },2000)
                 
             }
-                catch (error) {
-                    console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-                    const errorMessage = error.response?.data?.message  || "Erro desconhecido";
+            catch (error) {            
+                if (error.request) {
+                    setAlertText("Erro no servidor! Tente novamente mais tarde.");    
+                }
 
-                    setAlertText(errorMessage);
+                if (error.response) {
+                    if (error.response.status == 404 || error.response.status == 400) {
+                        setAlertText("Email Já cadastrado no sistema.");
+                    } 
+                }
+    
+                //reset inputs
+                setFormData({
+                    nome: "",
+                    email: "",
+                    senha: "",
+                    estado: "",
+                    dta_nascimento: ""
+                });
+                setConfirmpsw("");
 
-                    setFormData({
-                        nome: "",
-                        email: "",
-                        senha: "",
-                        estado: "",
-                        dta_nascimento: ""
-                    });
-
-                    setConfirmpsw("");
-                    setLoading("Criara Conta")
-                    setCursor({cursor:'auto'})
+                // alterations in button and cursor
+                setLoading("Criara Conta")
+                setCursor({cursor:'auto'})
                 };      
         };
     };
 
-// ----- END
+    // ----- END
 
 
-// ----- Start Button show password
+    // ----- Start Button show password
       
         const trocarImagem = () => {
           if (typeP === "password") {
-            setTipo("text");
+            setType("text");
             setImagem("/eye.svg");
           } else {
-            setTipo("password");
+            setType("password");
             setImagem("/eye-slash.svg"); 
           }
         };
 
-// ----- END
+    // ----- END
 
         
     return(
@@ -149,9 +163,9 @@ function Register(){
                     <h2>Facilite seu acesso criando uma conta</h2>
                 </section>
 
-                <div id="alert">
-                    <div id="background"></div>
-                    <p onChange={setAlertText}> {alertTxt}</p>
+                <div id="alert-re">
+                        <div id="background"></div>
+                        <p style={{ color: alertTxt === "Aguarde..." ? "#d8bf02" : "#ff3d3d" }}>{alertTxt} </p>                    
                 </div>
 
                 <form onSubmit={submitToApi} id='form-page2'>

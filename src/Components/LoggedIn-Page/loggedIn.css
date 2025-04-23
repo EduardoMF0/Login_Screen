@@ -35,6 +35,10 @@
     justify-content: space-between;
 }
 
+.title{
+    margin-top: 6vh;
+}
+
 p{
     font-size: 1.2vw;
     font-weight: bold;
@@ -93,10 +97,15 @@ p{
         flex-direction: column;
     }
 
-    p {
+    .title{
+        margin-top: 0;
+    }
+
+    p{
         font-size: calc(3vw + 0.2rem);
         margin-top: 3vh;
     }
+
     #first{
         margin-top: 0;
     }

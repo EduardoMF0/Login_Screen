@@ -21,16 +21,22 @@ function Form(){
     const [imagem, setImagem] = useState("/eye-slash.svg"); 
     const [typeP, setTipo] = useState("password");
     const [cursorLogin, setCursorLogin] = useState({cursor:'pointer'})
+    var user;
 
+
+    // ----- target input values
 
     const selectValue = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
-    var user;
+    // ----- END
+
+    // ----- Start Post to API
 
     const Login_function = async () => {
 
+        // alterations in button, alert message and cursor
         setLoading(<><img src={"/load.svg"} alt="Carregando" id='load-svg'/></>)
         setAlertText("Aguarde...")
         setCursorLogin({cursor:'wait'})
@@ -54,15 +60,10 @@ function Form(){
             
             localStorage.setItem("user", JSON.stringify(user));
 
-            console.log(user);
-            console.log(response.status);
-
             var status = response.status;
 
             }
-            catch (error) {
-                console.error("Erro ao cadastrar usuário", error.response?.data || error.message);
-                
+            catch (error) {                
                 if (error.request) {
                     setAlertText("Erro no servidor! Tente novamente mais tarde.");    
                 }
@@ -73,14 +74,20 @@ function Form(){
                     } 
                 }
 
+            // alterations in button and cursor
             setCursorLogin({cursor:'auto'})
             setLoading("Entrar")
         }
-
+        
+        // Navigate
         if(status == 200){
             navigate("/loggedIn", { state: { userInfo: user } });
         }
     };
+
+    // ----- END
+
+    // ----- Auto login if already logged
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
@@ -92,6 +99,11 @@ function Form(){
         }
     }, [navigate]);
 
+    // ----- END
+    
+
+    // ----- Start Button show password
+
     const trocarImagem = () => {
         if (typeP === "password") {
           setTipo("text");
@@ -101,6 +113,9 @@ function Form(){
           setImagem("/eye-slash.svg"); 
         }
       };
+
+    // ----- END
+
 
     return(
         

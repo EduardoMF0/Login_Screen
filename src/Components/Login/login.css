@@ -36,7 +36,7 @@
     color: var(--color-font);
 }
 
-#alert-login{
+/* #alert-login{
     height: 30px;
     width: 100%;
     border-radius: 8px;
@@ -58,7 +58,7 @@
     color: #ff3d3d;    
     position: absolute;
     font-weight: bold;
-}
+} */
 
 #form-page1{
     display: flex;

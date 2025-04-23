@@ -1,6 +1,6 @@
 import './loggedIn.css'
 
-// import {  useEffect } from 'react'
+import {  useEffect } from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
 ;
 
@@ -8,18 +8,21 @@ function LoggedIn (){
 
     const location = useLocation();
     const navigate = useNavigate();
+    // const [userInfo, setUserInfo] = useState(null);
 
 
-    const exitButton = () =>{
-        localStorage.removeItem("user");
 
-        navigate("/");
-    };
     
     var userInfo  = location.state?.userInfo;
-
-
     console.log(userInfo)
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+
+        if (!storedUser) {
+            navigate("/", { replace: true });
+        }
+    }, [navigate]);
 
     if (!userInfo) {
         const stored = localStorage.getItem("user");
@@ -27,8 +30,12 @@ function LoggedIn (){
             userInfo = JSON.parse(stored);
         }
     }
+    
+    const exitButton = () =>{
+        localStorage.removeItem("user");
 
-    console.log(userInfo);
+        navigate("/");
+    };
 
     if (userInfo.dta_nascimento && !isNaN(new Date(userInfo.dta_nascimento))) {
         var dataFormat = new Date(userInfo.dta_nascimento);
@@ -51,7 +58,7 @@ function LoggedIn (){
                             </div>
                             
                             <div className='title'>
-                                <p>Email:</p>
+                                <p id='p-bottom'>Email:</p>
                                 <div className='category'>{userInfo.email}</div>
                             </div>
                            
@@ -65,7 +72,7 @@ function LoggedIn (){
                             </div>
                             
                             <div className='title'>
-                                <p>Estado:</p>
+                                <p id='p-bottom'>Estado:</p>
                                 <div className='category'>{userInfo.estado}</div>
                             </div>
                             
