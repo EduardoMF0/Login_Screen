@@ -16,6 +16,8 @@ WORKDIR /src
 # Copia o arquivo do projeto corretamente
 COPY ["ApiCrud.csproj", "."]
 RUN dotnet restore
+RUN dotnet build -c Release --no-self-contained -o /app/build
+RUN dotnet publish -c Release --no-self-contained /p:UseAppHost=false -o /app/publish
 
 # Copia todo o código-fonte e compila o projeto
 COPY . .
