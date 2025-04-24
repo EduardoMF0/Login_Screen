@@ -22,12 +22,14 @@ namespace ApiCrud.Controllers
 
             var existing = _userRepository.LoginVerifyDb(userData.email);
 
-            if (existing == null)
+            if (existing != null)
             {
                 return BadRequest(new { Message = userData.nome, userData.email, userData.senha });
             }
 
             var user = new User(userData.nome ?? "", userData.email, userData.senha, userData.estado ?? "", userData.dta_nascimento);
+
+            _userRepository.add(user);
 
             return Ok(new { Message = "Funcionando !!!" });
             
@@ -40,7 +42,7 @@ namespace ApiCrud.Controllers
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState); // Mostra exatamente o que está errado
+                return BadRequest(ModelState); 
             }
 
             var user = _userRepository.LoginVerifyDb(userLogin.email);
