@@ -8,24 +8,22 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 8080
 
-# Usa o SDK para compilar a aplicação
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copia o arquivo do projeto corretamente
+# Copia apenas o .csproj para restaurar os pacotes
 COPY ["ApiCrud/ApiCrud.csproj", "ApiCrud/"]
+WORKDIR /src/ApiCrud
 RUN dotnet restore
 
-# Copia todo o código-fonte e compila o projeto
-COPY . .
+# Copia todo o restante do projeto
+COPY ApiCrud/. .
 RUN dotnet build -c $BUILD_CONFIGURATION -o /app/build
 
-# Publica os arquivos compilados
 FROM build AS publish
 RUN dotnet publish -c $BUILD_CONFIGURATION -o /app/publish
 
-# Usa o runtime para rodar a API
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
