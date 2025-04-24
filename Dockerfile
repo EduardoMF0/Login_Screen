@@ -14,7 +14,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copia o arquivo do projeto corretamente
-COPY ["APICrud/ApiCrud.csproj", "."]
+COPY ["ApiCrud/ApiCrud.csproj", "ApiCrud/"]
 RUN dotnet restore
 
 # Copia todo o código-fonte e compila o projeto
