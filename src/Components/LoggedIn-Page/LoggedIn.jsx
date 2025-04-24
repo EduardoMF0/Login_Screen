@@ -8,13 +8,11 @@ function LoggedIn (){
 
     const location = useLocation();
     const navigate = useNavigate();
-    // const [userInfo, setUserInfo] = useState(null);
-
-
 
     
     var userInfo  = location.state?.userInfo;
-    console.log(userInfo)
+
+    // ----- If Localstorage exists user, enter in page. If not return to home
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
@@ -31,16 +29,27 @@ function LoggedIn (){
         }
     }
     
+    // ----- END
+
+    // ----- Delete user  of Localstorage
+
     const exitButton = () =>{
         localStorage.removeItem("user");
 
         navigate("/");
     };
+    
+    // ----- END
+
+    // ----- Transform date to Brazilian standard
 
     if (userInfo.dta_nascimento && !isNaN(new Date(userInfo.dta_nascimento))) {
         var dataFormat = new Date(userInfo.dta_nascimento);
         dataFormat = new Intl.DateTimeFormat("pt-BR").format(dataFormat);
     }
+
+    // ----- END
+
 
     return(
         <div>
