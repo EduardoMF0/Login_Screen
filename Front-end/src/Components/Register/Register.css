@@ -60,33 +60,6 @@ h1, h2{
     color: var(--color-font);
 }
 
-/* #alert{
-    height: 30px;
-    width: 100%;
-    border-radius: 8px;
-
-    position: absolute;
-    top: 16%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#alert > #background{
-    width: 50%;
-    height: 100%;
-    border-radius: 8px;
-}
-#alert p{
-    font-size: 13px;
-    color: #ff3d3d;    
-    position: absolute;
-    font-weight: bold;
-    background-color: #faf9de;
-    border: 0.2vw solid #f6f5d2;
-    border-radius: 0.3vh;
-    padding: 0.3vw;  
-} */
-
 #alert-re{
     height: 30px;
     width: 100%;

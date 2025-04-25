@@ -57,8 +57,6 @@ function Register(){
     const submitToApi = async (e) => {
         e.preventDefault();
 
-        setAlertText("Aguarde...")
-
         if(formData.senha != confirmPsw){
             setAlertText(`Erro! "Email e/ou Senha incorretos".`);
             setConfirmpsw("");
@@ -86,11 +84,12 @@ function Register(){
         
             try {
 
+                setAlertText("Aguarde...")
                 setLoading(<><img src={"/load.svg"} alt="Carregando" id='load-svg'/></>)
                 setCursor({cursor:'wait'})
                 
                 const response = await axios.post(
-                    "http://localhost:5009/api/user/register",
+                    "https://backend-api-r4db.onrender.com/api/user/register",
                     formattedData,
                     { headers: { "Content-Type": "application/json" } } 
                 );
@@ -111,18 +110,19 @@ function Register(){
                 if (error.response) {
                     if (error.response.status == 404 || error.response.status == 400) {
                         setAlertText("Email Já cadastrado no sistema.");
-                    } 
+                        
+                        //reset inputs
+                        setFormData({
+                            nome: "",
+                            email: "",
+                            senha: "",
+                            estado: "",
+                            dta_nascimento: ""
+                        });
+                        setConfirmpsw("");
+
+                        } 
                 }
-    
-                //reset inputs
-                setFormData({
-                    nome: "",
-                    email: "",
-                    senha: "",
-                    estado: "",
-                    dta_nascimento: ""
-                });
-                setConfirmpsw("");
 
                 // alterations in button and cursor
                 setLoading("Criara Conta")
