@@ -27,3 +27,4 @@ vite.config.js
 
 .vs/
 .vs/*
+.vercel
