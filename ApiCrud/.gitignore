@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+viteTeste.jsx
+viteTeste.css
+viteTeste2.css
 vite.config.js
 
 # Editor directories and files
@@ -25,5 +28,8 @@ vite.config.js
 *.sln
 *.sw?
 
+obj/
 .vs/
+./vs/
 .vs/*
+../.vs/
