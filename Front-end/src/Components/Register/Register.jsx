@@ -189,6 +189,7 @@ function Register(){
                         <div>
                             <label htmlFor='state'>Estado:</label>
                             <select id="state" name="estado" value={formData.estado} onChange={selectValue}> 
+                            <option value="" selected hidden></option>
                             {states.map((state, index) => (
                                 <option key={index} value={state}>{state} </option>
                             ))}

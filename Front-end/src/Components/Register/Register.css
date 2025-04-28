@@ -238,8 +238,11 @@ input::placeholder{
     }
 
     #form-page2 {
-        width: 115%;
         margin-bottom: 10vh;
+    }
+
+    #form-page2 > .category-page2 {
+        width: 80%;
     }
 
     #form-page2 label {
@@ -254,6 +257,10 @@ input::placeholder{
     #date-div-page2 > input {
         width: 65%;
         min-width: 32vw;
+    }
+
+    #state-date {
+        width: 80%;
     }
 
     #form-page2 select {
