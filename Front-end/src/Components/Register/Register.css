@@ -155,6 +155,7 @@ input::placeholder{
 
 #date-div-page2 > input{
     width: 46%;
+    min-width: 140px;
 }
 #state-date > div:nth-child(2){
     display: flex;
