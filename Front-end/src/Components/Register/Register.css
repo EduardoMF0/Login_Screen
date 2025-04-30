@@ -117,10 +117,6 @@ h1, h2{
     margin-bottom:3.7vh;
 }
 
-.category-page2:nth-child(4) input{
-    padding-right: 4vw !important;
-}
-
 #form-page2 label{
     background: none;
     color: var(--color-font);
@@ -130,23 +126,42 @@ h1, h2{
     font-weight: bold;
 }
 
-#form-page2 #show-eye{
-    height: 4.3vh;
-    cursor: pointer;
+.category-page2 {
+    position: relative;
+    width: 100%;
+  }
 
-    position: absolute;
-    top: 48%;
-    left: 91%;
+.input-container2 {
+    position: relative;
+    width: 100%;
 }
+
+.category-page2:nth-child(4) input{
+    padding-right: 4vw !important;
+}
+
+#form-page2 #show-eye {
+    position: absolute;
+    right: 1.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: clamp(16px, 5.5vh, 115px);
+    width: auto;
+    cursor: pointer;
+    pointer-events: all;
+  }
 
 #form-page2 input{
     padding: calc(0.7vh + 0.3vw);
     font-size: calc(0.9vw + 0.3rem);
     width: 100%;
+    padding-right: 3.2rem;
     border-radius: 0.4vw;
     border: 0.2vw solid transparent;
     background-color: var(--color-gray);
     outline: none; 
+    box-sizing: border-box;
+
 }
 input::placeholder{
     color: #8a8a8a;
@@ -187,7 +202,7 @@ input::placeholder{
 }
 
 #form-page2 select{
-    padding: calc(0.9vh + 0.5vw);
+    padding: calc(0.5vh + 0.5vw);
     border-radius: 0.4vw;
     border: 0.2vw solid transparent;
     background-color: var(--color-gray);
@@ -294,7 +309,9 @@ input::placeholder{
     }
 
     #form-page2 #show-eye {
-        left: 89%;
+        left: 86%;
+        height: 5.3vh;
+        top: 46%;
     }
 
     #register-button {

@@ -158,14 +158,17 @@ function Form(){
 
                         <div className='category-page1'>
                             <label htmlFor='psw' className='label-page1'>Senha:</label>
-                            <img src={imagem} alt="show" id="show-eye" onClick={ChangeImg}/>
-                            <input type={typeP} name="senha" id='psw' placeholder='Digite sua Senha' value={formData.senha} onChange={selectValue} required/>
+                            <div className='input-container'>
+                                <img src={imagem} alt="show" id="show-eye" onClick={ChangeImg}/>
+                                <input type={typeP} name="senha" id='psw' placeholder='Digite sua Senha' value={formData.senha} onChange={selectValue} required/>
+                            </div>
                         </div>
                     
                         {/* <a href='' id='restore-psw'>Esqueci Minha Senha</a> */}
                     </form>
 
-                    <button type='submit' value="Submit" id='login-button' onClick={Login_function} style={cursorLogin}>{loading}</button>
+                    <button type='submit' value="Submit" id='login-button' onClick={Login_function} 
+                    style={cursorLogin}>{loading}</button>
 
                     <div className='register-div'>
                         <h3>Não tem conta? Cadastre-se</h3>

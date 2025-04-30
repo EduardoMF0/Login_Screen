@@ -211,8 +211,10 @@ function Register(){
 
                     <div className='category-page2'>
                         <label htmlFor='password'>Senha:</label>
-                        <img src={imagem} alt="show" id="show-eye" onClick={trocarImagem}/>
-                        <input type={typeP} placeholder='Digite sua Senha' name="senha" id='password' value={formData.senha} onChange={selectValue} required/>
+                        <div className='input-container2'>
+                            <img src={imagem} alt="show" id="show-eye" onClick={trocarImagem}/>
+                            <input type={typeP} placeholder='Digite sua Senha' name="senha" id='password' value={formData.senha} onChange={selectValue} required/>
+                        </div>
                     </div>
                         
                     <div className='category-page2'>       
