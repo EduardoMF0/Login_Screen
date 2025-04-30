@@ -125,7 +125,7 @@
     right: 1.3rem;
     top: 50%;
     transform: translateY(-50%);
-    height: clamp(16px, 5.5vh, 115px);
+    height: clamp(16px, 4.5vh, 115px);
     width: auto;
     cursor: pointer;
     pointer-events: all;
