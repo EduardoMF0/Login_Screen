@@ -41,7 +41,7 @@
     background-color: var(--color-purple2);
 }
 #back-button::after {
-    content: "🠔";
+    content: "←";
     font-size: clamp(0.8vw + 23px, 0.5rem + 2vw, 3vw);
     color: white;
     position: relative;
@@ -155,7 +155,6 @@ h1, h2{
     padding: calc(0.7vh + 0.3vw);
     font-size: calc(0.9vw + 0.3rem);
     width: 100%;
-    padding-right: 3.2rem;
     border-radius: 0.4vw;
     border: 0.2vw solid transparent;
     background-color: var(--color-gray);
@@ -202,7 +201,7 @@ input::placeholder{
 }
 
 #form-page2 select{
-    padding: calc(0.5vh + 0.5vw);
+    padding: calc(0.6vh + 0.6vw);
     border-radius: 0.4vw;
     border: 0.2vw solid transparent;
     background-color: var(--color-gray);
@@ -289,6 +288,7 @@ input::placeholder{
     #form-page2 input {
         padding: clamp(8px, 1.2vh + 0.6vw, 3vw);
         font-size: calc(2.5vw + 0.6rem);
+        border-radius: 1vw;
     }
 
     #date-div-page2 > input {
@@ -300,12 +300,18 @@ input::placeholder{
         padding-right: 12vw !important;
     }
 
+    #state-date > div:nth-child(2){
+        flex-direction: column;
+        gap: 0;
+    }
+
     #state-date {
         width: 80%;
     }
 
     #form-page2 select {
-        font-size: clamp(10px, 2vw + 0.3rem, 3vw);
+        font-size: clamp(15px, 2vw + 0.6rem, 3vw);
+        padding: clamp(8px, 1.3vh + 1vw, 100px);
     }
 
     #form-page2 #show-eye {
