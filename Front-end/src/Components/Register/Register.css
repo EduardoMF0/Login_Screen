@@ -42,7 +42,7 @@
 }
 #back-button::after {
     content: "←";
-    font-size: clamp(0.8vw + 23px, 0.5rem + 2vw, 3vw);
+    font-size: clamp(24px, 3vw, 40px);
     color: white;
     position: relative;
     display: inline-block;
