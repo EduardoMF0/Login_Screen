@@ -18,9 +18,10 @@ function Form(){
     const [, setuserInfo] = useState({});
     const [loading, setLoading] = useState('Entrar');
     const [alertTxt, setAlertText] = useState("");
-    const [imagem, setImagem] = useState("/eye-slash.svg"); 
-    const [typeP, setTipo] = useState("password");
+    const [imagem, setImg] = useState("/eye-slash.svg"); 
+    const [typeP, setType] = useState("password");
     const [cursorLogin, setCursorLogin] = useState({cursor:'pointer'})
+    const [isSubmitting, setIsSubmitting] = useState(false);
     var user;
 
 
@@ -36,16 +37,23 @@ function Form(){
 
     const Login_function = async () => {
 
-        // alterations in button, alert message and cursor
-        setLoading(<><img src={"/load.svg"} alt="Carregando" id='load-svg'/></>)
-        setAlertText("Aguarde...")
-        setCursorLogin({cursor:'wait'})
-        
-
         const formattedData = {
             email: formData.email,
             senha: formData.senha,
         };
+
+        if( !formattedData.email?.trim() || !formattedData.senha?.trim()){
+            setAlertText(`Erro! "Email e/ou Senha estão vazios!".`);
+            return;
+        }
+
+        // alterations in button, alert message and cursor
+        setLoading(<><img src={"/load.svg"} alt="Carregando" id='load-svg'/></>)
+        setAlertText("Aguarde...")
+        setCursorLogin({cursor:'wait'})
+  
+        if (isSubmitting) return;
+        setIsSubmitting(true); 
 
         try {
             const response = await axios.post(
@@ -104,18 +112,23 @@ function Form(){
 
     // ----- Start Button show password
 
-    const trocarImagem = () => {
+    const ChangeImg = () => {
         if (typeP === "password") {
-          setTipo("text");
-          setImagem("/eye.svg");
+          setType("text");
+          setImg("/eye.svg");
         } else {
-          setTipo("password");
-          setImagem("/eye-slash.svg"); 
+          setType("password");
+          setImg("/eye-slash.svg"); 
         }
       };
 
     // ----- END
 
+    const AlertColorBgd = () => {
+        if (!alertTxt) return "var(--color-white-page)";
+        if (alertTxt === "Aguarde...") return "#ffe40f59";
+        return "#f5232342";
+    };
 
     return(
         
@@ -130,7 +143,7 @@ function Form(){
                         <h2>Facilite seu acesso logando na sua conta</h2>
                     </section>
 
-                    <div id="alert-login">
+                    <div id="alert-login" style={{ backgroundColor: AlertColorBgd() }}>
                         <div id="background"></div>
                         <p style={{ color: alertTxt === "Aguarde..." ? "#d8bf02" : "#ff3d3d" }}>
                             {alertTxt}
@@ -145,7 +158,7 @@ function Form(){
 
                         <div className='category-page1'>
                             <label htmlFor='psw' className='label-page1'>Senha:</label>
-                            <img src={imagem} alt="show" id="show-eye" onClick={trocarImagem}/>
+                            <img src={imagem} alt="show" id="show-eye" onClick={ChangeImg}/>
                             <input type={typeP} name="senha" id='psw' placeholder='Digite sua Senha' value={formData.senha} onChange={selectValue} required/>
                         </div>
                     

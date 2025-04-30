@@ -24,6 +24,7 @@ function Register(){
     const [imagem, setImagem] = useState("/eye-slash.svg"); 
     const [loading, setLoading] = useState('Criar Conta');
     const [cursor, setCursor] = useState({cursor:'pointer'})
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
 
     // ----- Start Get API BR states
@@ -56,6 +57,9 @@ function Register(){
 
     const submitToApi = async (e) => {
         e.preventDefault();
+
+        if (isSubmitting) return;
+        setIsSubmitting(true); 
 
         if(formData.senha != confirmPsw){
             setAlertText(`Erro! "Email e/ou Senha incorretos".`);
@@ -148,7 +152,13 @@ function Register(){
 
     // ----- END
 
+    const AlertColorBgd = () => {
+        if (!alertTxt) return "var(--color-white-page)";
+        if (alertTxt === "Aguarde...") return "#ffe40f59";
+        return "#f5232342";
+    };
         
+
     return(
 
     <div > 
@@ -163,9 +173,11 @@ function Register(){
                     <h2>Facilite seu acesso criando uma conta</h2>
                 </section>
 
-                <div id="alert-re">
-                        <div id="background"></div>
-                        <p style={{ color: alertTxt === "Aguarde..." ? "#d8bf02" : "#ff3d3d" }}>{alertTxt} </p>                    
+                <div id="alert-re" style={{ backgroundColor: AlertColorBgd() }}>
+                    <div id="background"></div>
+                    <p style={{ color: alertTxt === "Aguarde..." ? "#d8bf02" : "#ff3d3d" }}>
+                        {alertTxt}
+                    </p>   
                 </div>
 
                 <form onSubmit={submitToApi} id='form-page2'>

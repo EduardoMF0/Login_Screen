@@ -39,7 +39,7 @@
     margin-top: 6vh;
 }
 
-p{
+.data-box p{
     font-size: 1.2vw;
     font-weight: bold;
     margin-left: 0.3vw;
@@ -101,7 +101,7 @@ p{
         margin-top: 0;
     }
 
-    p{
+    .data-box p{
         font-size: calc(3vw + 0.2rem);
         margin-top: 3vh;
     }
@@ -121,7 +121,7 @@ p{
 }
 
 @media screen and (max-width: 768px) and (min-width: 427px){
-    p{
+    .data-box p{
         font-size: 1.7vw;
     }
 
