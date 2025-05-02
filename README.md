@@ -22,6 +22,9 @@ Sinta-se à vontade para entrar em contato comigo pelo LinkedIn, disponível no 
 
  ## Aplicação:
 
+Este projeto consiste em uma página de login e cadastro com uma interface simples, desenvolvida em React, com foco em testar requisições HTTP para uma API construída em C# utilizando o Entity Framework.O armazenamento dos dados é feito em um banco de dados PostgreSQL.
+Durante o desenvolvimento, busquei aplicar boas práticas de segurança em todas as partes da aplicação, garantindo a proteção dos dados dos usuários.
+
  ### 💾 Cadastro
 • Formulário com envio de dados para a API, incluindo verificação de e-mail e armazenamento no banco de dados.
 
