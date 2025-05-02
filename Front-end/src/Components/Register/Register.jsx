@@ -189,7 +189,7 @@ function Register(){
                     
                     <div className='category-page2'>
                         <label htmlFor='email'>Email:</label>
-                        <input type="email" placeholder='Digite sua Email' name="email" id='email' value={formData.email} onChange={selectValue} required/>
+                        <input type="email" placeholder='Digite seu Email' name="email" id='email' value={formData.email} onChange={selectValue} required/>
                     </div>
 
                     <div id='state-date'>
